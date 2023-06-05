@@ -1,0 +1,2004 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="oml" nsURI="http://opencaesar.io/oml" nsPrefix="oml">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="This Ecore package specifies the syntax (metamodel) of the Ontological Modeling Language. OML models are instances of&#xA;this metamodel and can be manipulated using its API."/>
+    <details key="copyrightText" value="&#xA;Copyright 2019-2022 California Institute of Technology (&quot;Caltech&quot;).&#xA;U.S. Government sponsorship acknowledged.&#xA;&#xA;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#xA;you may not use this file except in compliance with the License.&#xA;You may obtain a copy of the License at&#xA;&#xA;     http://www.apache.org/licenses/LICENSE-2.0&#xA;&#xA;Unless required by applicable law or agreed to in writing, software&#xA;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#xA;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#xA;See the License for the specific language governing permissions and&#xA;limitations under the License.&#xA;"/>
+    <details key="modelDirectory" value="/io.opencaesar.oml/src-gen"/>
+    <details key="editDirectory" value="/io.opencaesar.oml.edit/src-gen"/>
+    <details key="importerID" value="org.eclipse.xsd.ecore.importer"/>
+    <details key="complianceLevel" value="11.0"/>
+    <details key="basePackage" value="io.opencaesar"/>
+  </eAnnotations>
+  <eAnnotations source="https://tabatkins.github.io/bikeshed/headings">
+    <details key="Elements" value=""/>
+    <details key="Literals" value=""/>
+    <details key="Vocabularies" value=""/>
+    <details key="Types" value=""/>
+    <details key="Properties" value=""/>
+    <details key="Relations" value=""/>
+    <details key="Predicates" value=""/>
+    <details key="Axioms" value=""/>
+    <details key="Descriptions" value=""/>
+    <details key="Instances" value=""/>
+    <details key="Assertions" value=""/>
+    <details key="Enumerations" value=""/>
+  </eAnnotations>
+  <eAnnotations source="https://tabatkins.github.io/bikeshed">
+    <details key="heading" value="Abstract-Syntax"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2011/Xcore">
+    <details key="Bikeshed" value="https://tabatkins.github.io/bikeshed"/>
+    <details key="BikeshedHeadings" value="https://tabatkins.github.io/bikeshed/headings"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Element is the root supertype in OML. All objects in an OML ontology are elements."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Elements"/>
+    </eAnnotations>
+    <eOperations name="getOntology" unique="false" eType="#//Ontology">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the ontology that defines this element"/>
+        <details key="body" value="&lt;%org.eclipse.emf.ecore.EObject%> current = this;&#xA;while (((current != null) &amp;&amp; (!(current instanceof &lt;%io.opencaesar.oml.Ontology%>))))&#xA;{&#xA;&#x9;current = current.eContainer();&#xA;}&#xA;return ((&lt;%io.opencaesar.oml.Ontology%>) current);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="extraValidate" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Validates this element by extra validation rules&#xA;@param diagnostics validation error diagnostics&#xA;@param context object-to-object map used in producing messages"/>
+        <details key="body" value="return &lt;%io.opencaesar.oml.util.OmlValidator2%>.INSTANCE.run(this, diagnostics, context);"/>
+      </eAnnotations>
+      <eParameters name="diagnostics" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      <eParameters name="context" unique="false">
+        <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+          <eTypeArguments eClassifier="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
+          <eTypeArguments eClassifier="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject"/>
+        </eGenericType>
+      </eParameters>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Annotation" eSuperTypes="#//Element">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Annotation is an element that specifies non-semantic information on an [=IdentifiedElement=].&#xA;An annotation is specified with an [=AnnotationProperty=] and an optional ([=Literal=] or [=Member=] reference) value.&#xA;When no value is specified, the boolean literal `true` is assumed to be specified."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Elements"/>
+    </eAnnotations>
+    <eOperations name="getValue" unique="false" eType="#//Element">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the value of the annotation"/>
+        <details key="body" value="&lt;%io.opencaesar.oml.Element%> _xifexpression = null;&#xA;&lt;%io.opencaesar.oml.Literal%> _literalValue = this.getLiteralValue();&#xA;boolean _tripleNotEquals = (_literalValue != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;_xifexpression = this.getLiteralValue();&#xA;}&#xA;else&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.Member%> _xifexpression_1 = null;&#xA;&#x9;&lt;%io.opencaesar.oml.Member%> _referenceValue = this.getReferenceValue();&#xA;&#x9;boolean _tripleNotEquals_1 = (_referenceValue != null);&#xA;&#x9;if (_tripleNotEquals_1)&#xA;&#x9;{&#xA;&#x9;&#x9;_xifexpression_1 = this.getReferenceValue();&#xA;&#x9;}&#xA;&#x9;_xifexpression = _xifexpression_1;&#xA;}&#xA;return _xifexpression;"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getAnnotatedElement" unique="false" eType="#//IdentifiedElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the identified element annotated by this annotation"/>
+        <details key="body" value="&lt;%io.opencaesar.oml.IdentifiedElement%> _owningElement = this.getOwningElement();&#xA;if ((_owningElement instanceof &lt;%io.opencaesar.oml.Member%>))&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.IdentifiedElement%> _owningElement_1 = this.getOwningElement();&#xA;&#x9;return ((&lt;%io.opencaesar.oml.Member%>) _owningElement_1).resolve();&#xA;}&#xA;return this.getOwningElement();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" lowerBound="1"
+        eType="#//AnnotationProperty">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The annotation property specified by this annotation"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literalValue" eType="#//Literal"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The literal value specified by this annotation"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referenceValue" eType="#//Member">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The reference (to a member) value specified by this annotation"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningElement" eType="#//IdentifiedElement"
+        eOpposite="#//IdentifiedElement/ownedAnnotations">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The identified element that owns this annotation"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdentifiedElement" abstract="true" eSuperTypes="#//Element">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="IdentifiedElement is an element that has a unique IRI (Internationalized Resource Identifier).&#xA;It can be annotated by a set of [=Annotations=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Elements"/>
+    </eAnnotations>
+    <eOperations name="getIri" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the IRI of this element"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAnnotations" upperBound="-1"
+        eType="#//Annotation" containment="true" resolveProxies="false" eOpposite="#//Annotation/owningElement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of annotations directly owned by this element"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Import" eSuperTypes="#//Element">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Import is an element owned by an [=ontology=] and specifies that it imports another ontology.&#xA;The imported ontology is referenced by its namespace and an optional prefix that is locally unique&#xA;within the importing ontology. Import can be of several [=ImportKind=] based on the following rules:&#xA;&#xA;- Vocabulary (`extends` Vocabulary, `uses` Description)&#xA;- Description (`extends` Description, `uses` Vocabulary)&#xA;- VocabularyBundle (`extends` VocabularyBundle, `includes` Vocabulary)&#xA;- DescriptionBundle (`extends` DescriptionBundle, `includes` Description, `uses` VocabularyBundle, `uses` Vocabulary)"/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Elements"/>
+    </eAnnotations>
+    <eOperations name="getIri" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the imported ontology's IRI"/>
+        <details key="body" value="&lt;%java.lang.String%> _namespace = this.getNamespace();&#xA;boolean _tripleEquals = (_namespace == null);&#xA;if (_tripleEquals)&#xA;{&#xA;&#x9;return null;&#xA;}&#xA;int i = this.getNamespace().indexOf(&quot;#&quot;);&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;i = this.getNamespace().lastIndexOf(&quot;/&quot;);&#xA;}&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;return this.getNamespace();&#xA;}&#xA;else&#xA;{&#xA;&#x9;return this.getNamespace().substring(0, i);&#xA;}"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getSeparator" unique="false" eType="#//SeparatorKind">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the imported ontology's namespace's separator character [=SeparatorKinds=]"/>
+        <details key="body" value="&lt;%java.lang.String%> _namespace = this.getNamespace();&#xA;boolean _tripleEquals = (_namespace == null);&#xA;if (_tripleEquals)&#xA;{&#xA;&#x9;return null;&#xA;}&#xA;int i = this.getNamespace().indexOf(&quot;#&quot;);&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;i = this.getNamespace().lastIndexOf(&quot;/&quot;);&#xA;}&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;return null;&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &lt;%io.opencaesar.oml.SeparatorKind%>.get(this.getNamespace().substring(i, (i + 1)));&#xA;}"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" unique="false" lowerBound="1"
+        eType="#//ImportKind">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The kind of this import"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="namespace" unique="false"
+        lowerBound="1" eType="#//Namespace">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The namespace of the imported ontology"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prefix" unique="false"
+        eType="#//ID">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The (locally unique) namespace prefix of the imported ontology"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningOntology" lowerBound="1"
+        eType="#//Ontology" eOpposite="#//Ontology/ownedImports">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The ontology that owns this import"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Instance" abstract="true" eSuperTypes="#//Element">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Instance is an element that represents a instance of one or more [=classifiers=].&#xA;It can assert a set of values for those classifiers' [=properties=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Instances"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPropertyValues" upperBound="-1"
+        eType="#//PropertyValueAssertion" containment="true" resolveProxies="false"
+        eOpposite="#//PropertyValueAssertion/owningInstance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The property value assertions owned by this instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Axiom" abstract="true" eSuperTypes="#//Element">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Axiom is an element that characterizes a [=term=] in some way."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Axioms"/>
+    </eAnnotations>
+    <eOperations name="getCharacterizedTerm" unique="false" eType="#//Term">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the term that is characterized by this axiom"/>
+      </eAnnotations>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Assertion" abstract="true" eSuperTypes="#//Element">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Assertion is an element that characterizes an [=instance=] by specifying the value of one of its [=properties=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Assertions"/>
+    </eAnnotations>
+    <eOperations name="getSubject" unique="false" eType="#//Instance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="*&#xA;Gets the instance that is the subject of this assertion"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getObject" unique="false" eType="#//Element">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="*&#xA;Gets the instance that is the object of this assertion"/>
+      </eAnnotations>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Predicate" abstract="true" eSuperTypes="#//Element">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Predicate is an element that represents a component of a [=rule=]'s antecedent or  consequent.&#xA;It specifies (one or more) [=arguments=] based on the specific subtype of predicate."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Predicates"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="antecedentRule" eType="#//Rule"
+        eOpposite="#//Rule/antecedent">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The rule' antecedent that this predicate is owned by"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="consequentRule" eType="#//Rule"
+        eOpposite="#//Rule/consequent">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The rule' consequent that this predicate is owned by"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Argument" eSuperTypes="#//Element">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Argument is an element that represents a variable name, a [=Literal=], or an [=NamedInstance=] specified in a [=predicate=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Predicates"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" unique="false"
+        eType="#//ID">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An optional variable specified by this argument"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literal" eType="#//Literal"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An optional literal specified by this argument"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instance" eType="#//NamedInstance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An optional instance specified by this argument"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal" abstract="true" eSuperTypes="#//Element">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Literal is an element that represents a literal value classified by a [=scalar=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Literals"/>
+    </eAnnotations>
+    <eOperations name="getValue" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EJavaObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the value of the given literal"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getStringValue" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the string value of the given literal"/>
+        <details key="body" value="&lt;%java.lang.String%> _xifexpression = null;&#xA;&lt;%java.lang.Object%> _value = this.getValue();&#xA;boolean _tripleNotEquals = (_value != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;_xifexpression = this.getValue().toString();&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression = &quot;&quot;;&#xA;}&#xA;return _xifexpression;"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getLexicalValue" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the lexical value of the given literal"/>
+        <details key="body" value="return this.getStringValue();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getTypeIri" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the iri of the given literal's type"/>
+      </eAnnotations>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Ontology" abstract="true" eSuperTypes="#//IdentifiedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Ontology is an identified element that represents a namespace for its [=members=]. It is defined&#xA;by a globally unique namespace (an iri followed by either # or /) and an abbreviated prefix.&#xA;An ontology can import other ontologies, and can make [=statements=] about its own as well as imported [=members=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Elements"/>
+    </eAnnotations>
+    <eOperations name="getIri" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Get the namespace's iri"/>
+        <details key="body" value="&lt;%java.lang.String%> _namespace = this.getNamespace();&#xA;boolean _tripleEquals = (_namespace == null);&#xA;if (_tripleEquals)&#xA;{&#xA;&#x9;return null;&#xA;}&#xA;int i = this.getNamespace().indexOf(&quot;#&quot;);&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;i = this.getNamespace().lastIndexOf(&quot;/&quot;);&#xA;}&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;return this.getNamespace();&#xA;}&#xA;else&#xA;{&#xA;&#x9;return this.getNamespace().substring(0, i);&#xA;}"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getSeparator" unique="false" eType="#//SeparatorKind">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Get the namespace's separator char"/>
+        <details key="body" value="&lt;%java.lang.String%> _namespace = this.getNamespace();&#xA;boolean _tripleEquals = (_namespace == null);&#xA;if (_tripleEquals)&#xA;{&#xA;&#x9;return null;&#xA;}&#xA;int i = this.getNamespace().indexOf(&quot;#&quot;);&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;i = this.getNamespace().lastIndexOf(&quot;/&quot;);&#xA;}&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;return null;&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &lt;%io.opencaesar.oml.SeparatorKind%>.get(this.getNamespace().substring(i, (i + 1)));&#xA;}"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="namespace" unique="false"
+        lowerBound="1" eType="#//Namespace">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The globally unique namespace of this ontology"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prefix" unique="false"
+        lowerBound="1" eType="#//ID">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The prefix of this ontology's namespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedImports" upperBound="-1"
+        eType="#//Import" containment="true" resolveProxies="false" eOpposite="#//Import/owningOntology">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of imports this ontology has to other ontologies"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Member" abstract="true" eSuperTypes="#//IdentifiedElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Member is an identified element defined by an [=ontology=]. Its IRI is unique and derived by concatenating the globally&#xA;unique namespace of its ontology with its locally unique name (i.e., member.iri=ontology.namespace+member.name)."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Elements"/>
+    </eAnnotations>
+    <eOperations name="getRef" unique="false" eType="#//Member">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the Ref of this member"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isRef" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines if the member is a ref to another member"/>
+        <details key="body" value="&lt;%io.opencaesar.oml.Member%> _ref = this.getRef();&#xA;return (_ref != null);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="resolve" unique="false" lowerBound="1" eType="#//Member">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines if the member is a ref to another member"/>
+        <details key="body" value="boolean _isRef = this.isRef();&#xA;if (_isRef)&#xA;{&#xA;&#x9;return this.getRef();&#xA;}&#xA;return this;"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getIri" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the IRI of this member"/>
+        <details key="body" value="final &lt;%io.opencaesar.oml.Member%> m = this.resolve();&#xA;boolean _eIsProxy = m.eIsProxy();&#xA;if (_eIsProxy)&#xA;{&#xA;&#x9;return ((&lt;%org.eclipse.emf.ecore.InternalEObject%>) m).eProxyURI().toString();&#xA;}&#xA;final &lt;%io.opencaesar.oml.Ontology%> ontology = m.getOntology();&#xA;&lt;%java.lang.Object%> _xifexpression = null;&#xA;if ((ontology != null))&#xA;{&#xA;&#x9;_xifexpression = ontology.getNamespace();&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression = &lt;%io.opencaesar.oml.SeparatorKind%>.HASH;&#xA;}&#xA;final &lt;%java.lang.Object%> namespace = ((&lt;%java.lang.Object%>)_xifexpression);&#xA;&lt;%java.lang.String%> _xifexpression_1 = null;&#xA;&lt;%java.lang.String%> _name = m.getName();&#xA;boolean _tripleNotEquals = (_name != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;_xifexpression_1 = m.getName();&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression_1 = &quot;&quot;;&#xA;}&#xA;return (namespace + _xifexpression_1);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getAbbreviatedIri" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the abbreviated IRI of this member"/>
+        <details key="body" value="final &lt;%io.opencaesar.oml.Member%> m = this.resolve();&#xA;boolean _eIsProxy = m.eIsProxy();&#xA;if (_eIsProxy)&#xA;{&#xA;&#x9;return ((&lt;%org.eclipse.emf.ecore.InternalEObject%>) m).eProxyURI().toString();&#xA;}&#xA;final &lt;%io.opencaesar.oml.Ontology%> ontology = m.getOntology();&#xA;&lt;%java.lang.String%> _xifexpression = null;&#xA;if ((ontology != null))&#xA;{&#xA;&#x9;&lt;%java.lang.String%> _prefix = ontology.getPrefix();&#xA;&#x9;_xifexpression = (_prefix + &quot;:&quot;);&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression = &quot;:&quot;;&#xA;}&#xA;final &lt;%java.lang.String%> prefix = _xifexpression;&#xA;&lt;%java.lang.String%> _xifexpression_1 = null;&#xA;&lt;%java.lang.String%> _name = m.getName();&#xA;boolean _tripleNotEquals = (_name != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;_xifexpression_1 = m.getName();&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression_1 = &quot;&quot;;&#xA;}&#xA;return (prefix + _xifexpression_1);"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="#//ID"
+        iD="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A unique name for the member within its ontology"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VocabularyBox" abstract="true" eSuperTypes="#//Ontology">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="VocabularyBox is the supertype of [=Vocabulary=] and [=VocabularyBundle=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Vocabularies"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DescriptionBox" abstract="true" eSuperTypes="#//Ontology">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="DescriptionBox is the supertype of [=Description=] and [=DescriptionBundle=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Descriptions"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Vocabulary" eSuperTypes="#//VocabularyBox">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Vocabulary is a vocabulary box whose statements specify terms and rules in a given domain."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Vocabularies"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStatements" upperBound="-1"
+        eType="#//VocabularyStatement" containment="true" resolveProxies="false" eOpposite="#//VocabularyStatement/owningVocabulary">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of statements contained by this vocabulary"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VocabularyBundle" eSuperTypes="#//VocabularyBox">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="VocabularyBundle is a vocabulary box that closes the world on its imported [=vocabularies=] by considering their =terms=]&#xA;that do not have common specializations to be disjoint."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Vocabularies"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Description" eSuperTypes="#//DescriptionBox">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Description is a description box whose statements specify instances in a given system."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Descriptions"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedStatements" upperBound="-1"
+        eType="#//DescriptionStatement" containment="true" resolveProxies="false"
+        eOpposite="#//DescriptionStatement/owningDescription">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of statements contained by this description"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DescriptionBundle" eSuperTypes="#//DescriptionBox">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="DescriptionBundle is a description box that closes the world on its imported [=descriptions=] by considering their [=instances=]&#xA;and their assertions to be the only ones available."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Descriptions"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Statement" abstract="true" eSuperTypes="#//Member">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Statement is a [=member=] that is owned by an [=ontology=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Elements"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VocabularyMember" abstract="true" eSuperTypes="#//Member">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="VocabularyMember is a [=member=] of a [=vocabulary=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Vocabularies"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DescriptionMember" abstract="true" eSuperTypes="#//Member">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="DescriptionMember is a [=member=] of a [=description=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Descriptions"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VocabularyStatement" abstract="true"
+      eSuperTypes="#//Statement #//VocabularyMember">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="VocabularyStatement is a [=statement=] owned by a [=vocabulary=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Vocabularies"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningVocabulary" lowerBound="1"
+        eType="#//Vocabulary" eOpposite="#//Vocabulary/ownedStatements">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The vocabulary that owns this statement"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DescriptionStatement" abstract="true"
+      eSuperTypes="#//Statement #//DescriptionMember">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="DescriptionStatement is a [=statement=] owned by a [=description=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Descriptions"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningDescription" lowerBound="1"
+        eType="#//Description" eOpposite="#//Description/ownedStatements">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The description that owns this statement"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Term" abstract="true" eSuperTypes="#//VocabularyMember">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Term is a [=member=] of a [=vocabulary=] that provides a particular semantic meaning when used in an [=assertion=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Vocabularies"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rule" eSuperTypes="#//VocabularyStatement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Rule is a [=member=] of a [=vocabulary=] that adds a new inference rule to the set supported natively by DL. A rule must specify a set of one or&#xA;more antecedent [=predicates=] that forms a conjunction that infers, when it holds, a set of one or more consequent [=predicates=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Vocabularies"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Rule">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A ref to another rule"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="antecedent" upperBound="-1"
+        eType="#//Predicate" containment="true" resolveProxies="false" eOpposite="#//Predicate/antecedentRule">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of predicates that form the antecedent of this rule"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="consequent" upperBound="-1"
+        eType="#//Predicate" containment="true" resolveProxies="false" eOpposite="#//Predicate/consequentRule">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The predicate that is the consequent of this rule"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BuiltIn" eSuperTypes="#//VocabularyStatement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="BuiltIn is a [=member=] of a [=vocabulary=] that represents a builtin function"/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Vocabularies"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//BuiltIn">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A ref to another builtin"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpecializableTerm" abstract="true" eSuperTypes="#//Term #//VocabularyStatement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="SpecializableTerm is a [=term=] that can be specialized by another term. It can have zero or more [=SpecializationAxioms=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Vocabularies"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSpecializations" upperBound="-1"
+        eType="#//SpecializationAxiom" containment="true" resolveProxies="false" eOpposite="#//SpecializationAxiom/owningTerm">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The specialization axioms owned by this term"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Property" abstract="true" eSuperTypes="#//Term">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Property is a [=term=] that relates an [=instance=] to a value. It is the super type of all property types."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Properties"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true" eSuperTypes="#//SpecializableTerm">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Type is a specializable term that classifies a set of [=instances=] or [=literals=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Types"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationBase" abstract="true" eSuperTypes="#//SpecializableTerm">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="RelationBase is a specializable term that is the abstract superclass of a relation from a source [=entity=] to a target [=entity=].&#xA;It can optionally name a [=ReverseRelation=] whose domain is the target and whose range is the source. Such relation can only be&#xA;specified on a relation base definition not a ref to an existing one. A relation base can be characterized with several&#xA;boolean flags that represent its DL semantics. Such flags apply conversely to the [=ReverseRelation=] (if named)."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Relations"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
+        eType="#//Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The entities that represent the sources of this relation base"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
+        eType="#//Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The entities that represent the targets of this relation base"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reverseRelation" eType="#//ReverseRelation"
+        containment="true" resolveProxies="false" eOpposite="#//ReverseRelation/relationBase">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The optional reverse relation of this relation base"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="functional" unique="false"
+        eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether this relation base is functional (i.e., {@code A -> B and A->C => B=C})"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inverseFunctional" unique="false"
+        eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether this relation base is inverse functional (i.e., {@code B->A and C->A => B=C})"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="symmetric" unique="false"
+        eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether this relation base is symmetric (i.e., {@code A->B => B->A})"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="asymmetric" unique="false"
+        eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether this relation base is asymmetric (i.e., {@code A->B => !(B->A)})"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reflexive" unique="false"
+        eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether this relation base is reflexive (i.e., {@code A => A->A})"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="irreflexive" unique="false"
+        eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether this relation base is irreflexive (i.e., {@code A => !(A->A)})"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transitive" unique="false"
+        eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether this relation base is transitive (i.e., {@code A->B and B->C => A->C})"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpecializableProperty" abstract="true"
+      eSuperTypes="#//SpecializableTerm #//Property">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="SpecializableProperty is a [=property=] that can be specialized. It can also specify [=PropertyEquivalenceAxioms=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Properties"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEquivalences" upperBound="-1"
+        eType="#//PropertyEquivalenceAxiom" containment="true" resolveProxies="false"
+        eOpposite="#//PropertyEquivalenceAxiom/owningProperty">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of property equivalence axioms of this property"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Classifier" abstract="true" eSuperTypes="#//Type">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Classifier is a [=type=] that classifies a set of [=instances=] and characterizes them with [=properties=]&#xA;(where it becomes a domain of these properties). it can also own a set of [=PropertyRestrictionAxioms=] as well as&#xA;set of [=ClassifierEquivalenceAxioms=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Types"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEquivalences" upperBound="-1"
+        eType="#//ClassifierEquivalenceAxiom" containment="true" resolveProxies="false"
+        eOpposite="#//ClassifierEquivalenceAxiom/owningClassifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of classifier equivalence axioms of this classifier"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPropertyRestrictions"
+        upperBound="-1" eType="#//PropertyRestrictionAxiom" containment="true" resolveProxies="false"
+        eOpposite="#//PropertyRestrictionAxiom/owningClassifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of property restriction axioms of this classifier"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Scalar" eSuperTypes="#//Type">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Scalar is a primitive [=type=] that represents a set of [=literals=]. Some scalars are considered standard (see below).&#xA;&#xA;A standard scalar can have specialization axioms to other standard scalars.&#xA;&#xA;Non-standard scalars cannot have specialization axioms, but can have scalar equivalence axioms.&#xA;&#xA;The standard scalars are:&#xA;&#xA;&lt;i>Numeric scalars&lt;/i>:&#xA;owl:real&#xA;owl:rational&#xA;xsd:decimal&#xA;xsd:integer&#xA;xsd:nonNegativeInteger&#xA;xsd:nonPositiveInteger&#xA;xsd:positiveInteger&#xA;xsd:negativeInteger&#xA;xsd:long&#xA;xsd:int&#xA;xsd:short&#xA;xsd:byte&#xA;xsd:unsignedLong&#xA;xsd:unsignedInt&#xA;xsd:unsignedShort&#xA;xsd:unsignedByte&#xA;xsd:double&#xA;xsd:float&#xA;&#xA;&lt;i>Time scalars&lt;/i>:&#xA;xsd:dateTime&#xA;xsd:dateTimeStamp&#xA;&#xA;&lt;i>Plain scalars&lt;/i>:&#xA;rdf:PlainLiteral&#xA;&lt;i>String scalars&lt;/i>:&#xA;xsd:string,&#xA;xsd:normalizedString,&#xA;xsd:token,&#xA;xsd:language,&#xA;xsd:Name,&#xA;xsd:NCName,&#xA;xsd:NMTOKEN&#xA;xsd:anyURI&#xA;&#xA;&lt;i>Boolean scalars&lt;/i>:&#xA;xsd:boolean&#xA;&#xA;&lt;/i>Binary scalars}&lt;/i>:&#xA;xsd:hexBinary&#xA;xsd:base64Binary&#xA;&#xA;&lt;i>XML scalars&lt;/i>:&#xA;rdf:XMLLiteral"/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Types"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Scalar">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A ref to another scalar"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEnumeration" eType="#//LiteralEnumerationAxiom"
+        containment="true" resolveProxies="false" eOpposite="#//LiteralEnumerationAxiom/owningScalar">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An enumeration of literals of this scalar"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEquivalences" upperBound="-1"
+        eType="#//ScalarEquivalenceAxiom" containment="true" resolveProxies="false"
+        eOpposite="#//ScalarEquivalenceAxiom/owningScalar">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of scalar equivalence axioms of this scalar"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Entity" abstract="true" eSuperTypes="#//Classifier">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Entity is a [=classifier=] whose instances are [=NamedInstances=]. It can also specify a set of [=KeyAxioms=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Types"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedKeys" upperBound="-1"
+        eType="#//KeyAxiom" containment="true" resolveProxies="false" eOpposite="#//KeyAxiom/owningEntity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The unique keys of this entity"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Structure" eSuperTypes="#//Classifier">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Structure is a [=classifier=] whose [=instances=] are anonymous and assignable as values to [=StructuredProperties=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Types"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Structure">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A ref to another structure"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Aspect" eSuperTypes="#//Entity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Aspect is an =[entity=] that represents a capability that may be specified on multiple [=concepts=].&#xA;An aspect can only specialize other aspects. It can also be specified as a type of [=NamedInstances=].&#xA;Aspects are not considered disjoint in a vocabulary bundle."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Types"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Aspect">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A ref to another aspect"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Concept" eSuperTypes="#//Entity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Concept is an [=entity=] that represents a concept in some domain.&#xA;It can only specialize other concepts of [=aspects=]. It can also be specified as a type of [=ConceptInstances=].&#xA;Concepts with no common subtypes are considered disjoint in a vocabulary bundle."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Types"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Concept">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A ref to another concept"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedEnumeration" eType="#//InstanceEnumerationAxiom"
+        containment="true" resolveProxies="false" eOpposite="#//InstanceEnumerationAxiom/owningConcept">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An enumeration of instances of this concept"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationEntity" eSuperTypes="#//Entity #//RelationBase">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="RelationEntity is an [=entity=] that represents a reified relation from a source entity to a target entity.&#xA;It can optionally name a [=ForwardRelation=] whose domain is the source and whose range is the target.&#xA;If both are named, such [=ForwardRelation=] becomes the inverse of the entity's [=ReverseRelation=] .&#xA;If not, then a default [=ForwardRelation=]  with the name 'has&lt;Relation>Forward' is assumed.&#xA;A relation entity ref cannot specify a [=ForwardRelation=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Relations"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//RelationEntity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A ref to another relation entity"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="forwardRelation" eType="#//ForwardRelation"
+        containment="true" resolveProxies="false" eOpposite="#//ForwardRelation/relationEntity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The optional forward relation of this relation entity"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AnnotationProperty" eSuperTypes="#//SpecializableProperty">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="AnnotationProperty is a [=SpecializableProperty=] with no DL semantics."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Properties"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//AnnotationProperty">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A ref to another annotation property"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SemanticProperty" abstract="true" eSuperTypes="#//Property">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="SemanticProperty is a [=property=] with DL semantics that relates a [=classifier=] acting as its&#xA;domain to a [=type=] acting as its range."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Properties"/>
+    </eAnnotations>
+    <eOperations name="isFunctional" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determines if this property is functional (has a max of one value per instance)"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getDomainList" unique="false" upperBound="-1" eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the domains of this property"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getRangeList" unique="false" upperBound="-1" eType="#//Type">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the ranges of this property"/>
+      </eAnnotations>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScalarProperty" eSuperTypes="#//SemanticProperty #//SpecializableProperty">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="ScalarProperty is a [=SemanticProperty=] whose range is a [=Scalar=]. It can specialize other [=ScalarProperties=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Properties"/>
+    </eAnnotations>
+    <eOperations name="getDomainList" unique="false" upperBound="-1" eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getDomains();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getRangeList" unique="false" upperBound="-1" eType="#//Type">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%io.opencaesar.oml.Scalar%>> _ranges = this.getRanges();&#xA;return new &lt;%org.eclipse.emf.common.util.BasicEList%>&lt;&lt;%io.opencaesar.oml.Type%>>(_ranges);"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//ScalarProperty">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A ref to another scalar property"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="functional" unique="false"
+        eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether this property is functional (has a max of one value per instance)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domains" upperBound="-1"
+        eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The classifier that is the domain of this property"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ranges" upperBound="-1"
+        eType="#//Scalar">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The scalar that is the range of this property"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StructuredProperty" eSuperTypes="#//SemanticProperty #//SpecializableProperty">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="StructuredProperty is a [=SemanticProperty=] whose range is a [=Structure=]. It can specialize other [=StructuredProperties=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Properties"/>
+    </eAnnotations>
+    <eOperations name="getDomainList" unique="false" upperBound="-1" eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getDomains();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getRangeList" unique="false" upperBound="-1" eType="#//Type">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%io.opencaesar.oml.Structure%>> _ranges = this.getRanges();&#xA;return new &lt;%org.eclipse.emf.common.util.BasicEList%>&lt;&lt;%io.opencaesar.oml.Type%>>(_ranges);"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//StructuredProperty">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A ref to another structured property"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="functional" unique="false"
+        eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether this property is functional (has a max of one value per instance)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domains" upperBound="-1"
+        eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The classifiers that are the domains of this property"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ranges" upperBound="-1"
+        eType="#//Structure">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The structures that are the range of this property"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Relation" abstract="true" eSuperTypes="#//SemanticProperty">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Relation is a [=SemanticProperty=] whose domain is an [=Entity=] and whose range is also an [=Entity=].&#xA;It can be characterized by DL flags and can have an inverse [=Relation=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Properties"/>
+    </eAnnotations>
+    <eOperations name="isInverseFunctional" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets whether this relation is inverse functional (i.e., {@code B->A and C->A => B=C})"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isSymmetric" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets whether this relation is symmetric (i.e., {@code A->B => B->A})"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isAsymmetric" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets whether this relation is asymmetric (i.e., {@code A->B => !(B->A)})"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isReflexive" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets whether this relation is reflexive (i.e., {@code A => A->A})"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isIrreflexive" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets whether this relation is irreflexive (i.e., {@code A => !(A->A)})"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isTransitive" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets whether this relation is transitive (i.e., {@code A->B and B->C => A->C})"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getDomains" unique="false" upperBound="-1" eType="#//Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the domain of this relation"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getRanges" unique="false" upperBound="-1" eType="#//Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the range of the relation"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getInverse" unique="false" eType="#//Relation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the inverse of this relation"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getDomainList" unique="false" upperBound="-1" eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%io.opencaesar.oml.Entity%>> _domains = this.getDomains();&#xA;return new &lt;%org.eclipse.emf.common.util.BasicEList%>&lt;&lt;%io.opencaesar.oml.Classifier%>>(_domains);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getRangeList" unique="false" upperBound="-1" eType="#//Type">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%io.opencaesar.oml.Entity%>> _ranges = this.getRanges();&#xA;return new &lt;%org.eclipse.emf.common.util.BasicEList%>&lt;&lt;%io.opencaesar.oml.Type%>>(_ranges);"/>
+      </eAnnotations>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForwardRelation" eSuperTypes="#//Relation">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="ForwardRelation is a [=Relation=] that is defined by a [=RelationEntity=]. Its domains are the sources of the [=RelationEntity=],&#xA;and its ranges are the targets of the [=RelationEntity=]. The DL semantics of a forward property are the same as those&#xA;of its [=RelationEntity=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Relations"/>
+    </eAnnotations>
+    <eOperations name="getRef" unique="false" eType="#//Member">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return null;"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isFunctional" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationEntity().isFunctional();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isInverseFunctional" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationEntity().isInverseFunctional();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isSymmetric" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationEntity().isSymmetric();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isAsymmetric" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationEntity().isAsymmetric();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isReflexive" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationEntity().isReflexive();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isIrreflexive" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationEntity().isIrreflexive();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isTransitive" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationEntity().isTransitive();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getDomains" unique="false" upperBound="-1" eType="#//Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationEntity().getSources();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getRanges" unique="false" upperBound="-1" eType="#//Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationEntity().getTargets();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getInverse" unique="false" eType="#//Relation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationEntity().getReverseRelation();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relationEntity" lowerBound="1"
+        eType="#//RelationEntity" eOpposite="#//RelationEntity/forwardRelation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The relation entity that owns this forward property"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReverseRelation" eSuperTypes="#//Relation">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="ReverseRelation is a [=Relation=] that is defined by a [=RelationBase=] and represents its inverse [=relation=]. Its domain&#xA;is the target of the [=RelationBase=], and its range is the source of the [=RelationBase=]. The DL semantics of a reverse property are&#xA;derived from those of its [=RelationBase=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Relations"/>
+    </eAnnotations>
+    <eOperations name="getRef" unique="false" eType="#//Member">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return null;"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isFunctional" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationBase().isInverseFunctional();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isInverseFunctional" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationBase().isInverseFunctional();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isSymmetric" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationBase().isSymmetric();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isAsymmetric" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationBase().isAsymmetric();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isReflexive" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationBase().isReflexive();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isIrreflexive" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationBase().isIrreflexive();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="isTransitive" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationBase().isTransitive();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getDomains" unique="false" upperBound="-1" eType="#//Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationBase().getTargets();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getRanges" unique="false" upperBound="-1" eType="#//Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRelationBase().getSources();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getInverse" unique="false" eType="#//Relation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&lt;%io.opencaesar.oml.Relation%> _xifexpression = null;&#xA;&lt;%io.opencaesar.oml.RelationBase%> _relationBase = this.getRelationBase();&#xA;if ((_relationBase instanceof &lt;%io.opencaesar.oml.RelationEntity%>))&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.RelationBase%> _relationBase_1 = this.getRelationBase();&#xA;&#x9;_xifexpression = ((&lt;%io.opencaesar.oml.RelationEntity%>) _relationBase_1).getForwardRelation();&#xA;}&#xA;else&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.Relation%> _xifexpression_1 = null;&#xA;&#x9;&lt;%io.opencaesar.oml.RelationBase%> _relationBase_2 = this.getRelationBase();&#xA;&#x9;if ((_relationBase_2 instanceof &lt;%io.opencaesar.oml.Relation%>))&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%io.opencaesar.oml.RelationBase%> _relationBase_3 = this.getRelationBase();&#xA;&#x9;&#x9;_xifexpression_1 = ((&lt;%io.opencaesar.oml.Relation%>) _relationBase_3);&#xA;&#x9;}&#xA;&#x9;_xifexpression = _xifexpression_1;&#xA;}&#xA;return _xifexpression;"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relationBase" lowerBound="1"
+        eType="#//RelationBase" eOpposite="#//RelationBase/reverseRelation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The relation that owns this reverse property"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnreifiedRelation" eSuperTypes="#//Relation #//RelationBase #//SpecializableProperty">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="UnreifiedRelation is a simple [=relation=] from a source [=entity=] to a target [=entity=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Relations"/>
+    </eAnnotations>
+    <eOperations name="getDomains" unique="false" upperBound="-1" eType="#//Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getSources();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getRanges" unique="false" upperBound="-1" eType="#//Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getTargets();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getInverse" unique="false" eType="#//Relation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getReverseRelation();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Relation">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A ref to another relation"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedInstance" abstract="true" eSuperTypes="#//DescriptionStatement #//Instance">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="NamedInstance is an [=Instance=] that is a member of a [=description=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Instances"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTypes" upperBound="-1"
+        eType="#//TypeAssertion" containment="true" resolveProxies="false" eOpposite="#//TypeAssertion/owningInstance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The types of this instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConceptInstance" eSuperTypes="#//NamedInstance">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="ConceptInstance is a [=NamedInstance=] that can be typed by [=Concepts=] or [=Aspects=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Instances"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//ConceptInstance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A ref to another concept instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationInstance" eSuperTypes="#//NamedInstance">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="RelationInstance is a [=NamedInstance=] that can be typed by [=RelationEntities=] and represents a link from one or&#xA;more [=NamedInstances=] as sources to one or more [=NamedInstances=] as targets."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Instances"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//RelationInstance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A ref to another relation instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
+        eType="#//NamedInstance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The named instances that are the sources of this relation instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
+        eType="#//NamedInstance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The named instances that are the targets of this relation instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StructureInstance" eSuperTypes="#//Instance">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="StructureInstance is an [=Instance=] that can be typed by a [=Structure=]. It is anonymous and gets assigned as a value of a [=StructuredProperty=]&#xA;either in a [=PropertyValueRestrictionAxiom=] or a [=PropertyValueAssertion=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Instances"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Structure">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The type of this instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningAxiom" eType="#//PropertyValueRestrictionAxiom"
+        eOpposite="#//PropertyValueRestrictionAxiom/structureInstanceValue">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The property value restriction axiom that assigns this instance as a restricted value"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningAssertion" eType="#//PropertyValueAssertion"
+        eOpposite="#//PropertyValueAssertion/structureInstanceValue">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The property value assertion that assigns this instance as a value"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="KeyAxiom" eSuperTypes="#//Axiom">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="KeyAxiom is an [=Axiom=] that specifies that a set of [=properties=] form a unique key for an [=entity=]. This means that all&#xA;[=instances=] of that [=entity=] must have unique values for those keys."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Axioms"/>
+    </eAnnotations>
+    <eOperations name="getKeyedEntity" unique="false" eType="#//Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the entity that defines the given key axiom"/>
+        <details key="body" value="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningEntity().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Entity%>) _resolve);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getCharacterizedTerm" unique="false" eType="#//Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getKeyedEntity();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" lowerBound="1"
+        upperBound="-1" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of key properties specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningEntity" eType="#//Entity"
+        eOpposite="#//Entity/ownedKeys">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The owning entity specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpecializationAxiom" eSuperTypes="#//Axiom">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="SpecializationAxiom is an [=Axiom=] specified on a [=SpecializableTerm=] that states that it specializes another [=Term=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Axioms"/>
+    </eAnnotations>
+    <eOperations name="getSubTerm" unique="false" eType="#//Term">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the sub (specific) term of the given specialization axiom"/>
+        <details key="body" value="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningTerm().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Term%>) _resolve);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getCharacterizedTerm" unique="false" eType="#//Term">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getSubTerm();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superTerm" lowerBound="1"
+        eType="#//Term">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The super term specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningTerm" eType="#//SpecializableTerm"
+        eOpposite="#//SpecializableTerm/ownedSpecializations">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The owning term specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InstanceEnumerationAxiom" eSuperTypes="#//Axiom">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="InstanceEnumerationAxiom is an [=Axiom=] specified on a [=Concept=] that states that it classifies an enumerated set of [=instances=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Axioms"/>
+    </eAnnotations>
+    <eOperations name="getEnumeratedConcept" unique="false" eType="#//Concept">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the concept that defines the given enumeration axiom"/>
+        <details key="body" value="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningConcept().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Concept%>) _resolve);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getCharacterizedTerm" unique="false" eType="#//Concept">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getEnumeratedConcept();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instances" lowerBound="1"
+        upperBound="-1" eType="#//ConceptInstance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of enumerated instances specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningConcept" eType="#//Concept"
+        eOpposite="#//Concept/ownedEnumeration">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The owning concept specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyRestrictionAxiom" abstract="true"
+      eSuperTypes="#//Axiom">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="PropertyRestrictionAxiom is an [=Axiom=] specified on a [=Classifier=] that places some restriction on the value of a [=SemanticProperty=]&#xA;in the context of the classifier."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Axioms"/>
+    </eAnnotations>
+    <eOperations name="getRestrictingDomain" unique="false" eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the restricting domain of the given property restriction axiom"/>
+        <details key="body" value="&lt;%io.opencaesar.oml.ClassifierEquivalenceAxiom%> _owningAxiom = this.getOwningAxiom();&#xA;boolean _tripleNotEquals = (_owningAxiom != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;return this.getOwningAxiom().getSubClassifier();&#xA;}&#xA;&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningClassifier().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Classifier%>) _resolve);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getCharacterizedTerm" unique="false" eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getRestrictingDomain();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" lowerBound="1"
+        eType="#//SemanticProperty">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The restricted property specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningClassifier" eType="#//Classifier"
+        eOpposite="#//Classifier/ownedPropertyRestrictions">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The owning classifier specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningAxiom" eType="#//ClassifierEquivalenceAxiom"
+        eOpposite="#//ClassifierEquivalenceAxiom/ownedPropertyRestrictions">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The owning classifier equivalence axiom specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LiteralEnumerationAxiom" eSuperTypes="#//Axiom">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="LiteralEnumerationAxiom is an [=Axiom=] specified on a [=Scalar=] that states that it classifies an enumerated set of [=Literals=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Axioms"/>
+    </eAnnotations>
+    <eOperations name="getEnumeratedScalar" unique="false" eType="#//Scalar">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the scalar that defines the given enumeration axiom"/>
+        <details key="body" value="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningScalar().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Scalar%>) _resolve);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getCharacterizedTerm" unique="false" eType="#//Scalar">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getEnumeratedScalar();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literals" lowerBound="1"
+        upperBound="-1" eType="#//Literal" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The set of enumerated literals specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningScalar" eType="#//Scalar"
+        eOpposite="#//Scalar/ownedEnumeration">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The owning scalar specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassifierEquivalenceAxiom" eSuperTypes="#//Axiom">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="ClassifierEquivalenceAxiom is an [=Axiom=] specified on a subject [=Classifier=] that states that it is equivalent to the intersection&#xA;of [=Classifiers=] and/or [=PropertyRestrictionAxioms=]. This axiom implies that the [=classifiers=] are super types of the subject classifier.&#xA;It also implies that when an instance is classified by this intersection, then it follows that it is also classified by the&#xA;subject classifier. Conversely, when an instance is classified by the subject classifier, then it follows that it is also classified&#xA;by the intersection. In other words, this axiom enables bi-directional (or two-way) inferencing."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Axioms"/>
+    </eAnnotations>
+    <eOperations name="getSubClassifier" unique="false" eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the sub classifier of this axiom"/>
+        <details key="body" value="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningClassifier().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Classifier%>) _resolve);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getCharacterizedTerm" unique="false" eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getSubClassifier();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superClassifiers" upperBound="-1"
+        eType="#//Classifier">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The super classifiers specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedPropertyRestrictions"
+        upperBound="-1" eType="#//PropertyRestrictionAxiom" containment="true" resolveProxies="false"
+        eOpposite="#//PropertyRestrictionAxiom/owningAxiom">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The property restrictions specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningClassifier" eType="#//Classifier"
+        eOpposite="#//Classifier/ownedEquivalences">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The owning classifier specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScalarEquivalenceAxiom" eSuperTypes="#//Axiom">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="ScalarEquivalenceAxiom is an [=Axiom=] specified on a subject [=Scalar=] that states that it is equivalent to another&#xA;[=Scalar=]. When the equivalent scalar is one of the standard scalars (see {@link Scalar}), the equivalence may specify&#xA;some restriction facets. The applicable facets depend on the restricted standard scalar (see below).&#xA;&#xA;This axiom implies that the subject scalar is a subtype of the equivalent scalar. When there are no facets specified,&#xA;then it also implies that the equivalent scalar is also a subtype of the subject scalar.&#xA;&#xA;The following is the set of allowed facets for each standard scalar:&#xA;&#xA;Numeric scalars (facets: minInclusive, maxInclusive, minExclusive, maxExclusive, literals):&#xA;Time scalars (facets: minInclusive, maxInclusive, minExclusive, maxExclusive, literals):&#xA;Plain scalars (facets: length, minLength, maxLength, pattern, language, literals):&#xA;String scalars (facets: length, minLength, maxLength, pattern, literals)&#xA;Binary scalars (facets: length, minLength, maxLength, literals):"/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Axioms"/>
+    </eAnnotations>
+    <eOperations name="getSubScalar" unique="false" eType="#//Scalar">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the sub scalar of this axiom"/>
+        <details key="body" value="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningScalar().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Scalar%>) _resolve);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getCharacterizedTerm" unique="false" eType="#//Scalar">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getSubScalar();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superScalar" lowerBound="1"
+        eType="#//Scalar">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The super scalar specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningScalar" lowerBound="1"
+        eType="#//Scalar" eOpposite="#//Scalar/ownedEquivalences">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The owning scalar specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" unique="false"
+        eType="#//UnsignedInteger">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The exact length of the literals of this scalar"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minLength" unique="false"
+        eType="#//UnsignedInteger">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The minimum length of the literals of this scalar"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxLength" unique="false"
+        eType="#//UnsignedInteger">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The maximum length of the literals of this scalar"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pattern" unique="false"
+        eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The pattern that the literals of this scalar conforms to"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" unique="false"
+        eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The language range that the literals of this scalar belong to&#xA;(based on http://www.rfc-editor.org/rfc/bcp/bcp47.txt)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="minInclusive" eType="#//Literal"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The minimum inclusive value of numeric literals of this scalar"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="minExclusive" eType="#//Literal"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The minimum exclusive value of numeric literals of this scalar"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="maxInclusive" eType="#//Literal"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The maximum inclusive value of numeric literals of this scalar"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="maxExclusive" eType="#//Literal"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The maximum exclusive value of numeric literals of this scalar"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyEquivalenceAxiom" eSuperTypes="#//Axiom">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="PropertyEquivalenceAxiom is an [=Axiom=] specified on a subject [=Property=] that states that it is equivalent&#xA;to another property. This axiom implies that the equivalent properties are super properties of the subject property&#xA;(and vice versa)."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Axioms"/>
+    </eAnnotations>
+    <eOperations name="getSubProperty" unique="false" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the sub property of this axiom"/>
+        <details key="body" value="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningProperty().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Property%>) _resolve);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getCharacterizedTerm" unique="false" eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getSubProperty();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superProperty" lowerBound="1"
+        eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The super property specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningProperty" eType="#//SpecializableProperty"
+        eOpposite="#//SpecializableProperty/ownedEquivalences">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The owning property specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyRangeRestrictionAxiom" eSuperTypes="#//PropertyRestrictionAxiom">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="PropertyRangeRestrictionAxiom is a [=PropertyRestrictionAxiom=] that restricts the range of a [=property=] to&#xA;a [=type=] that specializes the original range. This restrictions may apply to `all` or to `some` values of the property&#xA;that have the restricting [=classifier=] as a domain."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Axioms"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" unique="false" lowerBound="1"
+        eType="#//RangeRestrictionKind" defaultValueLiteral="all">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The range restriction kind specified by this axiom (default is all)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" lowerBound="1" eType="#//Type">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The restricted range specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyCardinalityRestrictionAxiom"
+      eSuperTypes="#//PropertyRestrictionAxiom">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="PropertyCardinalityRestrictionAxiom is a [=PropertyRestrictionAxiom=] that restricts the cardinality of a [=property=]&#xA;to an exact value, a minimum value or a maximum value. This restrictions can apply either to all values of the property&#xA;in the restricting [=classifier=], or only to those values classified by a specific subtype of the range."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Axioms"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" unique="false" lowerBound="1"
+        eType="#//CardinalityRestrictionKind" defaultValueLiteral="exactly">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The kind of cardinality restriction specified by this axiom (default is exactly)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cardinality" unique="false"
+        lowerBound="1" eType="#//UnsignedInt" defaultValueLiteral="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The value of the cardinality specified by this axiom (default is 1)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="#//Type">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The optional restricted range specified by this axiom"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyValueRestrictionAxiom" eSuperTypes="#//PropertyRestrictionAxiom">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="PropertyValueRestrictionAxiom is a [=PropertyRestrictionAxiom=] that restricts a [=property=] in a given domain to a specific&#xA;value. The value is either a [=literal=] value in the case of a [=ScalarProperty=], a contained [=StructureInstance=] value&#xA;in the case of a [=StructuredProperty=], or a reference to a ([=NamedInstance=] value in the case of a [=Relation=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Axioms"/>
+    </eAnnotations>
+    <eOperations name="getValue" unique="false" eType="#//Element">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the restricted value"/>
+        <details key="body" value="&lt;%io.opencaesar.oml.Element%> _xifexpression = null;&#xA;&lt;%io.opencaesar.oml.SemanticProperty%> _property = this.getProperty();&#xA;if ((_property instanceof &lt;%io.opencaesar.oml.ScalarProperty%>))&#xA;{&#xA;&#x9;_xifexpression = this.getLiteralValue();&#xA;}&#xA;else&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.Instance%> _xifexpression_1 = null;&#xA;&#x9;&lt;%io.opencaesar.oml.SemanticProperty%> _property_1 = this.getProperty();&#xA;&#x9;if ((_property_1 instanceof &lt;%io.opencaesar.oml.StructuredProperty%>))&#xA;&#x9;{&#xA;&#x9;&#x9;_xifexpression_1 = this.getStructureInstanceValue();&#xA;&#x9;}&#xA;&#x9;else&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%io.opencaesar.oml.NamedInstance%> _xifexpression_2 = null;&#xA;&#x9;&#x9;&lt;%io.opencaesar.oml.SemanticProperty%> _property_2 = this.getProperty();&#xA;&#x9;&#x9;if ((_property_2 instanceof &lt;%io.opencaesar.oml.Relation%>))&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;_xifexpression_2 = this.getNamedInstanceValue();&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;_xifexpression_1 = _xifexpression_2;&#xA;&#x9;}&#xA;&#x9;_xifexpression = _xifexpression_1;&#xA;}&#xA;return _xifexpression;"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literalValue" eType="#//Literal"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A restricted literal value (of a scalar property)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="structureInstanceValue"
+        eType="#//StructureInstance" containment="true" resolveProxies="false" eOpposite="#//StructureInstance/owningAxiom">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A restricted structure instance value (of a structured property)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="namedInstanceValue" eType="#//NamedInstance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A restricted named instance value (of a relation)"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertySelfRestrictionAxiom" eSuperTypes="#//PropertyRestrictionAxiom">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="PropertySelfRestrictionAxiom is a [=PropertyRestrictionAxiom=] that restricts a [=property=] in a given domain to be related to&#xA;itself only."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Axioms"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeAssertion" eSuperTypes="#//Assertion">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="TypeAssertion is an [=Assertion=] that specifies a type for a [=NamedInstance=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Assertions"/>
+    </eAnnotations>
+    <eOperations name="getSubject" unique="false" eType="#//NamedInstance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningInstance().resolve();&#xA;return ((&lt;%io.opencaesar.oml.NamedInstance%>) _resolve);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getObject" unique="false" eType="#//Element">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getType();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Entity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The type of the instance owning this assertion"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningInstance" eType="#//NamedInstance"
+        eOpposite="#//NamedInstance/ownedTypes">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The instance that owns this assertion"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyValueAssertion" eSuperTypes="#//Assertion">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="PropertyValueAssertion is an [=Assertion=]  that specifies a value for a [=property=] on an [=instance=]. The value is either a [=literal=] value&#xA;in the case of a [=ScalarProperty=], a contained [=StructureInstance=] value in the case of a [=StructuredProperty=], or a reference to a&#xA;[=NamedInstance=] value in the case of a [=Relation=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Assertions"/>
+    </eAnnotations>
+    <eOperations name="getValue" unique="false" eType="#//Element">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Gets the asserted value"/>
+        <details key="body" value="&lt;%io.opencaesar.oml.Element%> _xifexpression = null;&#xA;&lt;%io.opencaesar.oml.SemanticProperty%> _property = this.getProperty();&#xA;if ((_property instanceof &lt;%io.opencaesar.oml.ScalarProperty%>))&#xA;{&#xA;&#x9;_xifexpression = this.getLiteralValue();&#xA;}&#xA;else&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.Instance%> _xifexpression_1 = null;&#xA;&#x9;&lt;%io.opencaesar.oml.SemanticProperty%> _property_1 = this.getProperty();&#xA;&#x9;if ((_property_1 instanceof &lt;%io.opencaesar.oml.StructuredProperty%>))&#xA;&#x9;{&#xA;&#x9;&#x9;_xifexpression_1 = this.getStructureInstanceValue();&#xA;&#x9;}&#xA;&#x9;else&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%io.opencaesar.oml.NamedInstance%> _xifexpression_2 = null;&#xA;&#x9;&#x9;&lt;%io.opencaesar.oml.SemanticProperty%> _property_2 = this.getProperty();&#xA;&#x9;&#x9;if ((_property_2 instanceof &lt;%io.opencaesar.oml.Relation%>))&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;_xifexpression_2 = this.getNamedInstanceValue();&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;_xifexpression_1 = _xifexpression_2;&#xA;&#x9;}&#xA;&#x9;_xifexpression = _xifexpression_1;&#xA;}&#xA;return _xifexpression;"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getSubject" unique="false" eType="#//Instance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&lt;%io.opencaesar.oml.Instance%> _owningInstance = this.getOwningInstance();&#xA;if ((_owningInstance instanceof &lt;%io.opencaesar.oml.NamedInstance%>))&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.Instance%> _owningInstance_1 = this.getOwningInstance();&#xA;&#x9;&lt;%io.opencaesar.oml.Member%> _resolve = ((&lt;%io.opencaesar.oml.NamedInstance%>) _owningInstance_1).resolve();&#xA;&#x9;return ((&lt;%io.opencaesar.oml.NamedInstance%>) _resolve);&#xA;}&#xA;return this.getOwningInstance();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getObject" unique="false" eType="#//Element">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getValue();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" lowerBound="1"
+        eType="#//SemanticProperty">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The property referenced by this assertion"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literalValue" eType="#//Literal"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An asserted literal value of a scalar property"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="structureInstanceValue"
+        eType="#//StructureInstance" containment="true" resolveProxies="false" eOpposite="#//StructureInstance/owningAssertion">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An asserted structure instance value of a structured property"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="namedInstanceValue" eType="#//NamedInstance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An asserted named instance value of a relation"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owningInstance" eType="#//Instance"
+        eOpposite="#//Instance/ownedPropertyValues">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The instance that this property value assertion is about"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnaryPredicate" abstract="true" eSuperTypes="#//Predicate">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="UnaryPredicate is a [=Predicate=] that has one [=argument=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Predicates"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="argument" lowerBound="1"
+        eType="#//Argument" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An argument of the predicate"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BinaryPredicate" abstract="true" eSuperTypes="#//Predicate">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="BinaryPredicate is a [=Predicate=] that has two [=arguments=]: argument1 and argument2"/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Predicates"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="argument1" lowerBound="1"
+        eType="#//Argument" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An argument of the predicate"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="argument2" lowerBound="1"
+        eType="#//Argument" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An argument of the predicate"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BuiltInPredicate" eSuperTypes="#//Predicate">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="BuiltInPredicate is a [=Predicate=] that has two [=arguments=]: argument1 and argument2"/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Predicates"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="builtIn" lowerBound="1"
+        eType="#//BuiltIn">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The called builtin"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="arguments" lowerBound="1"
+        upperBound="-1" eType="#//Argument" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An argument of the predicate"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypePredicate" eSuperTypes="#//UnaryPredicate">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="TypePredicate is a [=UnaryPredicate=] whose [=argument=] is bound to a value typed by a given [=type=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Predicates"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The type of a value"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationEntityPredicate" eSuperTypes="#//UnaryPredicate #//BinaryPredicate">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="RelationEntityPredicate is a [=UnaryPredicate=] and [=BinaryPredicate=] that holds when its [=argument=] is bound to an [=RelationInstance=] typed by the given [=RelationEntity=],&#xA;its argument1 is bound to the source of that [=RelationInstance=] and its argument2 is bound to the target of that [=RelationInstance=]&#xA;."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Predicates"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//RelationEntity">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The type of a relation instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyPredicate" eSuperTypes="#//BinaryPredicate">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="PropertyPredicate is a [=BinaryPredicate=] that holds when its argument1 is bound to an [=NamedInstance=] and its argument2 is bound to a&#xA;a value of a given [=property=] on that instance."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Predicates"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" lowerBound="1"
+        eType="#//Property">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The property of an instance"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SameAsPredicate" eSuperTypes="#//BinaryPredicate">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="SameAsPredicate is a [=BinaryPredicate=] that holds when its two [=arguments=] are bound to the same [=NamedInstance=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Predicates"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DifferentFromPredicate" eSuperTypes="#//BinaryPredicate">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="DifferentFromPredicate is a [=BinaryPredicate=] that holds when its two [=arguments=] are bound to different [=NamedInstances=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Predicates"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QuotedLiteral" eSuperTypes="#//Literal">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="QuotedLiteral is a [=literal=] that specifies its lexical value as a quoted string along with a language tag, a [=Scalar=] type, or neither."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Literals"/>
+    </eAnnotations>
+    <eOperations name="getLexicalValue" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&lt;%java.lang.String%> _value = this.getValue();&#xA;&lt;%java.lang.String%> _plus = (&quot;\&quot;&quot; + _value);&#xA;&lt;%java.lang.String%> _plus_1 = (_plus + &quot;\&quot;&quot;);&#xA;&lt;%java.lang.String%> _xifexpression = null;&#xA;&lt;%java.lang.String%> _langTag = this.getLangTag();&#xA;boolean _tripleNotEquals = (_langTag != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;&lt;%java.lang.String%> _langTag_1 = this.getLangTag();&#xA;&#x9;_xifexpression = (&quot;$&quot; + _langTag_1);&#xA;}&#xA;else&#xA;{&#xA;&#x9;&lt;%java.lang.String%> _typeIri = this.getTypeIri();&#xA;&#x9;&lt;%java.lang.String%> _plus_2 = (&quot;^^&lt;&quot; + _typeIri);&#xA;&#x9;_xifexpression = (_plus_2 + &quot;>&quot;);&#xA;}&#xA;return (_plus_1 + _xifexpression);"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getTypeIri" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&lt;%java.lang.String%> _xifexpression = null;&#xA;&lt;%io.opencaesar.oml.Scalar%> _type = this.getType();&#xA;boolean _tripleNotEquals = (_type != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;_xifexpression = this.getType().getIri();&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression = (&lt;%io.opencaesar.oml.util.OmlConstants%>.XSD_NS + &quot;string&quot;);&#xA;}&#xA;return _xifexpression;"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" lowerBound="1"
+        eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The value of this literal represented as a string"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="langTag" unique="false"
+        eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The langTag of this literal"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Scalar">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The scalar that is the type of this literal"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerLiteral" eSuperTypes="#//Literal">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="IntegerLiteral is a [=literal=] that represents a 32-bit integer value."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Literals"/>
+    </eAnnotations>
+    <eOperations name="getTypeIri" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return (&lt;%io.opencaesar.oml.util.OmlConstants%>.XSD_NS + &quot;integer&quot;);"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EIntegerObject"
+        defaultValueLiteral="0">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The int value of this literal"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecimalLiteral" eSuperTypes="#//Literal">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="DecimalLiteral is a [=literal=] that represents an arbitrary precision decimal value."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Literals"/>
+    </eAnnotations>
+    <eOperations name="getTypeIri" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return (&lt;%io.opencaesar.oml.util.OmlConstants%>.XSD_NS + &quot;decimal&quot;);"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" lowerBound="1"
+        eType="#//Decimal" defaultValueLiteral="0.0">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The decimal value of this literal"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DoubleLiteral" eSuperTypes="#//Literal">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="DoubleLiteral is a [=literal=] that represents a 64-bit double precision floating point value."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Literals"/>
+    </eAnnotations>
+    <eOperations name="getTypeIri" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return (&lt;%io.opencaesar.oml.util.OmlConstants%>.XSD_NS + &quot;double&quot;);"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EDoubleObject"
+        defaultValueLiteral="0.0">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The double value of this literal"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteral" eSuperTypes="#//Literal">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="BooleanLiteral is a [=literal=] that represents the boolean values `true` and `false`."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Literals"/>
+    </eAnnotations>
+    <eOperations name="isValue" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getValue().booleanValue();"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="getTypeIri" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return (&lt;%io.opencaesar.oml.util.OmlConstants%>.XSD_NS + &quot;boolean&quot;);"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" eType="ecore:EDataType ../org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The boolean value of this literal"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SeparatorKind">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="SeparatorKind is an enumeration that specifies the separator character of an ontology's namespace. It can be one of two values: # or /."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Elements"/>
+    </eAnnotations>
+    <eLiterals name="hash" literal="#"/>
+    <eLiterals name="slash" value="1" literal="/"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RangeRestrictionKind">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="RangeRestrictionKind is an enumeration that specifies the scope of a [=PropertyRangeRestrictionAxiom=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Properties"/>
+    </eAnnotations>
+    <eLiterals name="all">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="All values are restricted to the range"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="some" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Some values are restricted to the range"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CardinalityRestrictionKind">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="CardinalityRestrictionKind is an enumeration that specifies the kind of [=PropertyCardinalityRestrictionAxiom=] on a [=property=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Properties"/>
+    </eAnnotations>
+    <eLiterals name="exactly">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The cardinality must match this"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="min" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The cardinality is at least this"/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="max" value="2">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The cardinality is at most this"/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ImportKind">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="ImportKind is an enumeration that specifies the kind of =[import=]."/>
+    </eAnnotations>
+    <eAnnotations source="https://tabatkins.github.io/bikeshed">
+      <details key="heading" value="Elements"/>
+    </eAnnotations>
+    <eLiterals name="extension" literal="extends">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Extension is an import that allows an ontology to extend another of the same type."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="usage" value="1" literal="uses">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Usage is an import that allows an ontology to use another of a different box type."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="inclusion" value="2" literal="includes">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Inclusion is an import that allows a bundle ontology to include a non-bundle ontology of the same box type."/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="UnsignedInt" instanceClassName="long">
+    <eAnnotations>
+      <details key="minInclusive" value="0"/>
+      <details key="maxInclusive" value="4294967295"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="UnsignedInteger" instanceClassName="java.lang.Long">
+    <eAnnotations>
+      <details key="minInclusive" value="0"/>
+      <details key="maxInclusive" value="4294967295"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Decimal" instanceClassName="java.math.BigDecimal">
+    <eAnnotations>
+      <details key="baseType" value="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="ID" instanceClassName="java.lang.String">
+    <eAnnotations>
+      <details key="pattern" value="[a-zA-Z0-9_]([a-zA-Z0-9_\-.$])*"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Namespace" instanceClassName="java.lang.String">
+    <eAnnotations>
+      <details key="pattern" value="([^\s#])*(#|/)"/>
+      <details key="minLength" value="2"/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

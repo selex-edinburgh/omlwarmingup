@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Zhello
+Bundle-SymbolicName: omlwarmingup
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: zhello
+Bundle-RequiredExecutionEnvironment: JavaSE-17

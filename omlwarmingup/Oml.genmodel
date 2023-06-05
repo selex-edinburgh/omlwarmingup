@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="&#xA;Copyright 2019-2022 California Institute of Technology (&quot;Caltech&quot;).&#xA;U.S. Government sponsorship acknowledged.&#xA;&#xA;Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#xA;you may not use this file except in compliance with the License.&#xA;You may obtain a copy of the License at&#xA;&#xA;     http://www.apache.org/licenses/LICENSE-2.0&#xA;&#xA;Unless required by applicable law or agreed to in writing, software&#xA;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#xA;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#xA;See the License for the specific language governing permissions and&#xA;limitations under the License.&#xA;"
+    modelDirectory="/io.opencaesar.oml/src-gen" editDirectory="/io.opencaesar.oml.edit/src-gen"
+    modelPluginID="OMLWarmingUp" runtimeJar="true" modelName="Oml" updateClasspath="false"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory=""
+    booleanFlagsField="eFlags" booleanFlagsReservedBits="8" importerID="org.eclipse.xsd.ecore.importer"
+    containmentProxies="true" complianceLevel="11.0" language="en" usedGenPackages="../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
+    operationReflection="true" importOrganizing="true" decoration="Live" oSGiCompatible="true"
+    eclipsePlatformVersion="Juno" autoResizeProperties="true" autoExpandProperties="10"
+    findAction="true" expandAllAction="true" collapseAllAction="true" revertAction="true">
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
+    <genAnnotations source="selectedPackages">
+      <details key="http://www.eclipse.org/emf/2002/Ecore" value="Ecore.xsd"/>
+    </genAnnotations>
+    <details key="directoryURI" value="."/>
+  </genAnnotations>
+  <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter.xmi">
+    <genAnnotations source="selectedPackages">
+      <details key="http://www.eclipse.org/emf/2002/Ecore" value="EcoreXMI.xsd"/>
+    </genAnnotations>
+    <details key="directoryURI" value="."/>
+  </genAnnotations>
+  <foreignModel>Oml.xcore</foreignModel>
+  <modelPluginVariables>org.eclipse.xtext.xbase.lib</modelPluginVariables>
+  <modelPluginVariables>org.eclipse.emf.ecore.xcore.lib</modelPluginVariables>
+  <genPackages prefix="Oml" basePackage="io.opencaesar" disposableProviderFactory="true"
+      ecorePackage="oml.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="oml.ecore#//SeparatorKind">
+      <genEnumLiterals ecoreEnumLiteral="oml.ecore#//SeparatorKind/hash"/>
+      <genEnumLiterals ecoreEnumLiteral="oml.ecore#//SeparatorKind/slash"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="oml.ecore#//RangeRestrictionKind">
+      <genEnumLiterals ecoreEnumLiteral="oml.ecore#//RangeRestrictionKind/all"/>
+      <genEnumLiterals ecoreEnumLiteral="oml.ecore#//RangeRestrictionKind/some"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="oml.ecore#//CardinalityRestrictionKind">
+      <genEnumLiterals ecoreEnumLiteral="oml.ecore#//CardinalityRestrictionKind/exactly"/>
+      <genEnumLiterals ecoreEnumLiteral="oml.ecore#//CardinalityRestrictionKind/min"/>
+      <genEnumLiterals ecoreEnumLiteral="oml.ecore#//CardinalityRestrictionKind/max"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="oml.ecore#//ImportKind">
+      <genEnumLiterals ecoreEnumLiteral="oml.ecore#//ImportKind/extension"/>
+      <genEnumLiterals ecoreEnumLiteral="oml.ecore#//ImportKind/usage"/>
+      <genEnumLiterals ecoreEnumLiteral="oml.ecore#//ImportKind/inclusion"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="oml.ecore#//UnsignedInt"/>
+    <genDataTypes ecoreDataType="oml.ecore#//UnsignedInteger"/>
+    <genDataTypes ecoreDataType="oml.ecore#//Decimal"/>
+    <genDataTypes ecoreDataType="oml.ecore#//ID"/>
+    <genDataTypes ecoreDataType="oml.ecore#//Namespace"/>
+    <genClasses image="false" ecoreClass="oml.ecore#//Element">
+      <genOperations ecoreOperation="oml.ecore#//Element/getOntology" body="&lt;%org.eclipse.emf.ecore.EObject%> current = this;&#xA;while (((current != null) &amp;&amp; (!(current instanceof &lt;%io.opencaesar.oml.Ontology%>))))&#xA;{&#xA;&#x9;current = current.eContainer();&#xA;}&#xA;return ((&lt;%io.opencaesar.oml.Ontology%>) current);"/>
+      <genOperations ecoreOperation="oml.ecore#//Element/extraValidate" body="return &lt;%io.opencaesar.oml.util.OmlValidator2%>.INSTANCE.run(this, diagnostics, context);">
+        <genParameters ecoreParameter="oml.ecore#//Element/extraValidate/diagnostics"/>
+        <genParameters ecoreParameter="oml.ecore#//Element/extraValidate/context"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//Annotation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//Annotation/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Annotation/literalValue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//Annotation/referenceValue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//Annotation/owningElement"/>
+      <genOperations ecoreOperation="oml.ecore#//Annotation/getValue" body="&lt;%io.opencaesar.oml.Element%> _xifexpression = null;&#xA;&lt;%io.opencaesar.oml.Literal%> _literalValue = this.getLiteralValue();&#xA;boolean _tripleNotEquals = (_literalValue != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;_xifexpression = this.getLiteralValue();&#xA;}&#xA;else&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.Member%> _xifexpression_1 = null;&#xA;&#x9;&lt;%io.opencaesar.oml.Member%> _referenceValue = this.getReferenceValue();&#xA;&#x9;boolean _tripleNotEquals_1 = (_referenceValue != null);&#xA;&#x9;if (_tripleNotEquals_1)&#xA;&#x9;{&#xA;&#x9;&#x9;_xifexpression_1 = this.getReferenceValue();&#xA;&#x9;}&#xA;&#x9;_xifexpression = _xifexpression_1;&#xA;}&#xA;return _xifexpression;"/>
+      <genOperations ecoreOperation="oml.ecore#//Annotation/getAnnotatedElement" body="&lt;%io.opencaesar.oml.IdentifiedElement%> _owningElement = this.getOwningElement();&#xA;if ((_owningElement instanceof &lt;%io.opencaesar.oml.Member%>))&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.IdentifiedElement%> _owningElement_1 = this.getOwningElement();&#xA;&#x9;return ((&lt;%io.opencaesar.oml.Member%>) _owningElement_1).resolve();&#xA;}&#xA;return this.getOwningElement();"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//IdentifiedElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//IdentifiedElement/ownedAnnotations"/>
+      <genOperations ecoreOperation="oml.ecore#//IdentifiedElement/getIri"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//Import/kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//Import/namespace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//Import/prefix"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//Import/owningOntology"/>
+      <genOperations ecoreOperation="oml.ecore#//Import/getIri" body="&lt;%java.lang.String%> _namespace = this.getNamespace();&#xA;boolean _tripleEquals = (_namespace == null);&#xA;if (_tripleEquals)&#xA;{&#xA;&#x9;return null;&#xA;}&#xA;int i = this.getNamespace().indexOf(&quot;#&quot;);&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;i = this.getNamespace().lastIndexOf(&quot;/&quot;);&#xA;}&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;return this.getNamespace();&#xA;}&#xA;else&#xA;{&#xA;&#x9;return this.getNamespace().substring(0, i);&#xA;}"/>
+      <genOperations ecoreOperation="oml.ecore#//Import/getSeparator" body="&lt;%java.lang.String%> _namespace = this.getNamespace();&#xA;boolean _tripleEquals = (_namespace == null);&#xA;if (_tripleEquals)&#xA;{&#xA;&#x9;return null;&#xA;}&#xA;int i = this.getNamespace().indexOf(&quot;#&quot;);&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;i = this.getNamespace().lastIndexOf(&quot;/&quot;);&#xA;}&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;return null;&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &lt;%io.opencaesar.oml.SeparatorKind%>.get(this.getNamespace().substring(i, (i + 1)));&#xA;}"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//Instance">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Instance/ownedPropertyValues"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//Axiom">
+      <genOperations ecoreOperation="oml.ecore#//Axiom/getCharacterizedTerm"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//Assertion">
+      <genOperations ecoreOperation="oml.ecore#//Assertion/getSubject"/>
+      <genOperations ecoreOperation="oml.ecore#//Assertion/getObject"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//Predicate">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//Predicate/antecedentRule"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//Predicate/consequentRule"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//Argument">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//Argument/variable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Argument/literal"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//Argument/instance"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//Literal">
+      <genOperations ecoreOperation="oml.ecore#//Literal/getValue"/>
+      <genOperations ecoreOperation="oml.ecore#//Literal/getStringValue" body="&lt;%java.lang.String%> _xifexpression = null;&#xA;&lt;%java.lang.Object%> _value = this.getValue();&#xA;boolean _tripleNotEquals = (_value != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;_xifexpression = this.getValue().toString();&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression = &quot;&quot;;&#xA;}&#xA;return _xifexpression;"/>
+      <genOperations ecoreOperation="oml.ecore#//Literal/getLexicalValue" body="return this.getStringValue();"/>
+      <genOperations ecoreOperation="oml.ecore#//Literal/getTypeIri"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//Ontology">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//Ontology/namespace"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//Ontology/prefix"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Ontology/ownedImports"/>
+      <genOperations ecoreOperation="oml.ecore#//Ontology/getIri" body="&lt;%java.lang.String%> _namespace = this.getNamespace();&#xA;boolean _tripleEquals = (_namespace == null);&#xA;if (_tripleEquals)&#xA;{&#xA;&#x9;return null;&#xA;}&#xA;int i = this.getNamespace().indexOf(&quot;#&quot;);&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;i = this.getNamespace().lastIndexOf(&quot;/&quot;);&#xA;}&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;return this.getNamespace();&#xA;}&#xA;else&#xA;{&#xA;&#x9;return this.getNamespace().substring(0, i);&#xA;}"/>
+      <genOperations ecoreOperation="oml.ecore#//Ontology/getSeparator" body="&lt;%java.lang.String%> _namespace = this.getNamespace();&#xA;boolean _tripleEquals = (_namespace == null);&#xA;if (_tripleEquals)&#xA;{&#xA;&#x9;return null;&#xA;}&#xA;int i = this.getNamespace().indexOf(&quot;#&quot;);&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;i = this.getNamespace().lastIndexOf(&quot;/&quot;);&#xA;}&#xA;if ((i == (-1)))&#xA;{&#xA;&#x9;return null;&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &lt;%io.opencaesar.oml.SeparatorKind%>.get(this.getNamespace().substring(i, (i + 1)));&#xA;}"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//Member">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//Member/name"/>
+      <genOperations ecoreOperation="oml.ecore#//Member/getRef"/>
+      <genOperations ecoreOperation="oml.ecore#//Member/isRef" body="&lt;%io.opencaesar.oml.Member%> _ref = this.getRef();&#xA;return (_ref != null);"/>
+      <genOperations ecoreOperation="oml.ecore#//Member/resolve" body="boolean _isRef = this.isRef();&#xA;if (_isRef)&#xA;{&#xA;&#x9;return this.getRef();&#xA;}&#xA;return this;"/>
+      <genOperations ecoreOperation="oml.ecore#//Member/getIri" body="final &lt;%io.opencaesar.oml.Member%> m = this.resolve();&#xA;boolean _eIsProxy = m.eIsProxy();&#xA;if (_eIsProxy)&#xA;{&#xA;&#x9;return ((&lt;%org.eclipse.emf.ecore.InternalEObject%>) m).eProxyURI().toString();&#xA;}&#xA;final &lt;%io.opencaesar.oml.Ontology%> ontology = m.getOntology();&#xA;&lt;%java.lang.Object%> _xifexpression = null;&#xA;if ((ontology != null))&#xA;{&#xA;&#x9;_xifexpression = ontology.getNamespace();&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression = &lt;%io.opencaesar.oml.SeparatorKind%>.HASH;&#xA;}&#xA;final &lt;%java.lang.Object%> namespace = ((&lt;%java.lang.Object%>)_xifexpression);&#xA;&lt;%java.lang.String%> _xifexpression_1 = null;&#xA;&lt;%java.lang.String%> _name = m.getName();&#xA;boolean _tripleNotEquals = (_name != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;_xifexpression_1 = m.getName();&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression_1 = &quot;&quot;;&#xA;}&#xA;return (namespace + _xifexpression_1);"/>
+      <genOperations ecoreOperation="oml.ecore#//Member/getAbbreviatedIri" body="final &lt;%io.opencaesar.oml.Member%> m = this.resolve();&#xA;boolean _eIsProxy = m.eIsProxy();&#xA;if (_eIsProxy)&#xA;{&#xA;&#x9;return ((&lt;%org.eclipse.emf.ecore.InternalEObject%>) m).eProxyURI().toString();&#xA;}&#xA;final &lt;%io.opencaesar.oml.Ontology%> ontology = m.getOntology();&#xA;&lt;%java.lang.String%> _xifexpression = null;&#xA;if ((ontology != null))&#xA;{&#xA;&#x9;&lt;%java.lang.String%> _prefix = ontology.getPrefix();&#xA;&#x9;_xifexpression = (_prefix + &quot;:&quot;);&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression = &quot;:&quot;;&#xA;}&#xA;final &lt;%java.lang.String%> prefix = _xifexpression;&#xA;&lt;%java.lang.String%> _xifexpression_1 = null;&#xA;&lt;%java.lang.String%> _name = m.getName();&#xA;boolean _tripleNotEquals = (_name != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;_xifexpression_1 = m.getName();&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression_1 = &quot;&quot;;&#xA;}&#xA;return (prefix + _xifexpression_1);"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//VocabularyBox"/>
+    <genClasses image="false" ecoreClass="oml.ecore#//DescriptionBox"/>
+    <genClasses ecoreClass="oml.ecore#//Vocabulary">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Vocabulary/ownedStatements"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//VocabularyBundle"/>
+    <genClasses ecoreClass="oml.ecore#//Description">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Description/ownedStatements"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//DescriptionBundle"/>
+    <genClasses image="false" ecoreClass="oml.ecore#//Statement"/>
+    <genClasses image="false" ecoreClass="oml.ecore#//VocabularyMember"/>
+    <genClasses image="false" ecoreClass="oml.ecore#//DescriptionMember"/>
+    <genClasses image="false" ecoreClass="oml.ecore#//VocabularyStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//VocabularyStatement/owningVocabulary"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//DescriptionStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//DescriptionStatement/owningDescription"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//Term"/>
+    <genClasses ecoreClass="oml.ecore#//Rule">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//Rule/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Rule/antecedent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Rule/consequent"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//BuiltIn">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//BuiltIn/ref"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//SpecializableTerm">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//SpecializableTerm/ownedSpecializations"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//Property"/>
+    <genClasses image="false" ecoreClass="oml.ecore#//Type"/>
+    <genClasses image="false" ecoreClass="oml.ecore#//RelationBase">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//RelationBase/sources"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//RelationBase/targets"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//RelationBase/reverseRelation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//RelationBase/functional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//RelationBase/inverseFunctional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//RelationBase/symmetric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//RelationBase/asymmetric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//RelationBase/reflexive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//RelationBase/irreflexive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//RelationBase/transitive"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//SpecializableProperty">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//SpecializableProperty/ownedEquivalences"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//Classifier">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Classifier/ownedEquivalences"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Classifier/ownedPropertyRestrictions"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//Scalar">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//Scalar/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Scalar/ownedEnumeration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Scalar/ownedEquivalences"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//Entity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Entity/ownedKeys"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//Structure">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//Structure/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//Aspect">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//Aspect/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//Concept">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//Concept/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//Concept/ownedEnumeration"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//RelationEntity">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//RelationEntity/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//RelationEntity/forwardRelation"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//AnnotationProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//AnnotationProperty/ref"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//SemanticProperty">
+      <genOperations ecoreOperation="oml.ecore#//SemanticProperty/isFunctional"/>
+      <genOperations ecoreOperation="oml.ecore#//SemanticProperty/getDomainList"/>
+      <genOperations ecoreOperation="oml.ecore#//SemanticProperty/getRangeList"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//ScalarProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//ScalarProperty/ref"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//ScalarProperty/functional"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//ScalarProperty/domains"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//ScalarProperty/ranges"/>
+      <genOperations ecoreOperation="oml.ecore#//ScalarProperty/getDomainList" body="return this.getDomains();"/>
+      <genOperations ecoreOperation="oml.ecore#//ScalarProperty/getRangeList" body="&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%io.opencaesar.oml.Scalar%>> _ranges = this.getRanges();&#xA;return new &lt;%org.eclipse.emf.common.util.BasicEList%>&lt;&lt;%io.opencaesar.oml.Type%>>(_ranges);"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//StructuredProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//StructuredProperty/ref"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//StructuredProperty/functional"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//StructuredProperty/domains"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//StructuredProperty/ranges"/>
+      <genOperations ecoreOperation="oml.ecore#//StructuredProperty/getDomainList"
+          body="return this.getDomains();"/>
+      <genOperations ecoreOperation="oml.ecore#//StructuredProperty/getRangeList"
+          body="&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%io.opencaesar.oml.Structure%>> _ranges = this.getRanges();&#xA;return new &lt;%org.eclipse.emf.common.util.BasicEList%>&lt;&lt;%io.opencaesar.oml.Type%>>(_ranges);"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//Relation">
+      <genOperations ecoreOperation="oml.ecore#//Relation/isInverseFunctional"/>
+      <genOperations ecoreOperation="oml.ecore#//Relation/isSymmetric"/>
+      <genOperations ecoreOperation="oml.ecore#//Relation/isAsymmetric"/>
+      <genOperations ecoreOperation="oml.ecore#//Relation/isReflexive"/>
+      <genOperations ecoreOperation="oml.ecore#//Relation/isIrreflexive"/>
+      <genOperations ecoreOperation="oml.ecore#//Relation/isTransitive"/>
+      <genOperations ecoreOperation="oml.ecore#//Relation/getDomains"/>
+      <genOperations ecoreOperation="oml.ecore#//Relation/getRanges"/>
+      <genOperations ecoreOperation="oml.ecore#//Relation/getInverse"/>
+      <genOperations ecoreOperation="oml.ecore#//Relation/getDomainList" body="&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%io.opencaesar.oml.Entity%>> _domains = this.getDomains();&#xA;return new &lt;%org.eclipse.emf.common.util.BasicEList%>&lt;&lt;%io.opencaesar.oml.Classifier%>>(_domains);"/>
+      <genOperations ecoreOperation="oml.ecore#//Relation/getRangeList" body="&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%io.opencaesar.oml.Entity%>> _ranges = this.getRanges();&#xA;return new &lt;%org.eclipse.emf.common.util.BasicEList%>&lt;&lt;%io.opencaesar.oml.Type%>>(_ranges);"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//ForwardRelation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//ForwardRelation/relationEntity"/>
+      <genOperations ecoreOperation="oml.ecore#//ForwardRelation/getRef" body="return null;"/>
+      <genOperations ecoreOperation="oml.ecore#//ForwardRelation/isFunctional" body="return this.getRelationEntity().isFunctional();"/>
+      <genOperations ecoreOperation="oml.ecore#//ForwardRelation/isInverseFunctional"
+          body="return this.getRelationEntity().isInverseFunctional();"/>
+      <genOperations ecoreOperation="oml.ecore#//ForwardRelation/isSymmetric" body="return this.getRelationEntity().isSymmetric();"/>
+      <genOperations ecoreOperation="oml.ecore#//ForwardRelation/isAsymmetric" body="return this.getRelationEntity().isAsymmetric();"/>
+      <genOperations ecoreOperation="oml.ecore#//ForwardRelation/isReflexive" body="return this.getRelationEntity().isReflexive();"/>
+      <genOperations ecoreOperation="oml.ecore#//ForwardRelation/isIrreflexive" body="return this.getRelationEntity().isIrreflexive();"/>
+      <genOperations ecoreOperation="oml.ecore#//ForwardRelation/isTransitive" body="return this.getRelationEntity().isTransitive();"/>
+      <genOperations ecoreOperation="oml.ecore#//ForwardRelation/getDomains" body="return this.getRelationEntity().getSources();"/>
+      <genOperations ecoreOperation="oml.ecore#//ForwardRelation/getRanges" body="return this.getRelationEntity().getTargets();"/>
+      <genOperations ecoreOperation="oml.ecore#//ForwardRelation/getInverse" body="return this.getRelationEntity().getReverseRelation();"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//ReverseRelation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//ReverseRelation/relationBase"/>
+      <genOperations ecoreOperation="oml.ecore#//ReverseRelation/getRef" body="return null;"/>
+      <genOperations ecoreOperation="oml.ecore#//ReverseRelation/isFunctional" body="return this.getRelationBase().isInverseFunctional();"/>
+      <genOperations ecoreOperation="oml.ecore#//ReverseRelation/isInverseFunctional"
+          body="return this.getRelationBase().isInverseFunctional();"/>
+      <genOperations ecoreOperation="oml.ecore#//ReverseRelation/isSymmetric" body="return this.getRelationBase().isSymmetric();"/>
+      <genOperations ecoreOperation="oml.ecore#//ReverseRelation/isAsymmetric" body="return this.getRelationBase().isAsymmetric();"/>
+      <genOperations ecoreOperation="oml.ecore#//ReverseRelation/isReflexive" body="return this.getRelationBase().isReflexive();"/>
+      <genOperations ecoreOperation="oml.ecore#//ReverseRelation/isIrreflexive" body="return this.getRelationBase().isIrreflexive();"/>
+      <genOperations ecoreOperation="oml.ecore#//ReverseRelation/isTransitive" body="return this.getRelationBase().isTransitive();"/>
+      <genOperations ecoreOperation="oml.ecore#//ReverseRelation/getDomains" body="return this.getRelationBase().getTargets();"/>
+      <genOperations ecoreOperation="oml.ecore#//ReverseRelation/getRanges" body="return this.getRelationBase().getSources();"/>
+      <genOperations ecoreOperation="oml.ecore#//ReverseRelation/getInverse" body="&lt;%io.opencaesar.oml.Relation%> _xifexpression = null;&#xA;&lt;%io.opencaesar.oml.RelationBase%> _relationBase = this.getRelationBase();&#xA;if ((_relationBase instanceof &lt;%io.opencaesar.oml.RelationEntity%>))&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.RelationBase%> _relationBase_1 = this.getRelationBase();&#xA;&#x9;_xifexpression = ((&lt;%io.opencaesar.oml.RelationEntity%>) _relationBase_1).getForwardRelation();&#xA;}&#xA;else&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.Relation%> _xifexpression_1 = null;&#xA;&#x9;&lt;%io.opencaesar.oml.RelationBase%> _relationBase_2 = this.getRelationBase();&#xA;&#x9;if ((_relationBase_2 instanceof &lt;%io.opencaesar.oml.Relation%>))&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%io.opencaesar.oml.RelationBase%> _relationBase_3 = this.getRelationBase();&#xA;&#x9;&#x9;_xifexpression_1 = ((&lt;%io.opencaesar.oml.Relation%>) _relationBase_3);&#xA;&#x9;}&#xA;&#x9;_xifexpression = _xifexpression_1;&#xA;}&#xA;return _xifexpression;"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//UnreifiedRelation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//UnreifiedRelation/ref"/>
+      <genOperations ecoreOperation="oml.ecore#//UnreifiedRelation/getDomains" body="return this.getSources();"/>
+      <genOperations ecoreOperation="oml.ecore#//UnreifiedRelation/getRanges" body="return this.getTargets();"/>
+      <genOperations ecoreOperation="oml.ecore#//UnreifiedRelation/getInverse" body="return this.getReverseRelation();"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//NamedInstance">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//NamedInstance/ownedTypes"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//ConceptInstance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//ConceptInstance/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//RelationInstance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//RelationInstance/ref"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//RelationInstance/sources"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//RelationInstance/targets"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//StructureInstance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//StructureInstance/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//StructureInstance/owningAxiom"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//StructureInstance/owningAssertion"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//KeyAxiom">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//KeyAxiom/properties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//KeyAxiom/owningEntity"/>
+      <genOperations ecoreOperation="oml.ecore#//KeyAxiom/getKeyedEntity" body="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningEntity().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Entity%>) _resolve);"/>
+      <genOperations ecoreOperation="oml.ecore#//KeyAxiom/getCharacterizedTerm" body="return this.getKeyedEntity();"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//SpecializationAxiom">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//SpecializationAxiom/superTerm"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//SpecializationAxiom/owningTerm"/>
+      <genOperations ecoreOperation="oml.ecore#//SpecializationAxiom/getSubTerm" body="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningTerm().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Term%>) _resolve);"/>
+      <genOperations ecoreOperation="oml.ecore#//SpecializationAxiom/getCharacterizedTerm"
+          body="return this.getSubTerm();"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//InstanceEnumerationAxiom">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//InstanceEnumerationAxiom/instances"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//InstanceEnumerationAxiom/owningConcept"/>
+      <genOperations ecoreOperation="oml.ecore#//InstanceEnumerationAxiom/getEnumeratedConcept"
+          body="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningConcept().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Concept%>) _resolve);"/>
+      <genOperations ecoreOperation="oml.ecore#//InstanceEnumerationAxiom/getCharacterizedTerm"
+          body="return this.getEnumeratedConcept();"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//PropertyRestrictionAxiom">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyRestrictionAxiom/property"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyRestrictionAxiom/owningClassifier"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyRestrictionAxiom/owningAxiom"/>
+      <genOperations ecoreOperation="oml.ecore#//PropertyRestrictionAxiom/getRestrictingDomain"
+          body="&lt;%io.opencaesar.oml.ClassifierEquivalenceAxiom%> _owningAxiom = this.getOwningAxiom();&#xA;boolean _tripleNotEquals = (_owningAxiom != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;return this.getOwningAxiom().getSubClassifier();&#xA;}&#xA;&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningClassifier().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Classifier%>) _resolve);"/>
+      <genOperations ecoreOperation="oml.ecore#//PropertyRestrictionAxiom/getCharacterizedTerm"
+          body="return this.getRestrictingDomain();"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//LiteralEnumerationAxiom">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//LiteralEnumerationAxiom/literals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//LiteralEnumerationAxiom/owningScalar"/>
+      <genOperations ecoreOperation="oml.ecore#//LiteralEnumerationAxiom/getEnumeratedScalar"
+          body="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningScalar().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Scalar%>) _resolve);"/>
+      <genOperations ecoreOperation="oml.ecore#//LiteralEnumerationAxiom/getCharacterizedTerm"
+          body="return this.getEnumeratedScalar();"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//ClassifierEquivalenceAxiom">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//ClassifierEquivalenceAxiom/superClassifiers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//ClassifierEquivalenceAxiom/ownedPropertyRestrictions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//ClassifierEquivalenceAxiom/owningClassifier"/>
+      <genOperations ecoreOperation="oml.ecore#//ClassifierEquivalenceAxiom/getSubClassifier"
+          body="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningClassifier().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Classifier%>) _resolve);"/>
+      <genOperations ecoreOperation="oml.ecore#//ClassifierEquivalenceAxiom/getCharacterizedTerm"
+          body="return this.getSubClassifier();"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//ScalarEquivalenceAxiom">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//ScalarEquivalenceAxiom/superScalar"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//ScalarEquivalenceAxiom/owningScalar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//ScalarEquivalenceAxiom/length"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//ScalarEquivalenceAxiom/minLength"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//ScalarEquivalenceAxiom/maxLength"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//ScalarEquivalenceAxiom/pattern"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//ScalarEquivalenceAxiom/language"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//ScalarEquivalenceAxiom/minInclusive"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//ScalarEquivalenceAxiom/minExclusive"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//ScalarEquivalenceAxiom/maxInclusive"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//ScalarEquivalenceAxiom/maxExclusive"/>
+      <genOperations ecoreOperation="oml.ecore#//ScalarEquivalenceAxiom/getSubScalar"
+          body="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningScalar().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Scalar%>) _resolve);"/>
+      <genOperations ecoreOperation="oml.ecore#//ScalarEquivalenceAxiom/getCharacterizedTerm"
+          body="return this.getSubScalar();"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//PropertyEquivalenceAxiom">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyEquivalenceAxiom/superProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyEquivalenceAxiom/owningProperty"/>
+      <genOperations ecoreOperation="oml.ecore#//PropertyEquivalenceAxiom/getSubProperty"
+          body="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningProperty().resolve();&#xA;return ((&lt;%io.opencaesar.oml.Property%>) _resolve);"/>
+      <genOperations ecoreOperation="oml.ecore#//PropertyEquivalenceAxiom/getCharacterizedTerm"
+          body="return this.getSubProperty();"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//PropertyRangeRestrictionAxiom">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//PropertyRangeRestrictionAxiom/kind"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyRangeRestrictionAxiom/range"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//PropertyCardinalityRestrictionAxiom">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//PropertyCardinalityRestrictionAxiom/kind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//PropertyCardinalityRestrictionAxiom/cardinality"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyCardinalityRestrictionAxiom/range"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//PropertyValueRestrictionAxiom">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyValueRestrictionAxiom/literalValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyValueRestrictionAxiom/structureInstanceValue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyValueRestrictionAxiom/namedInstanceValue"/>
+      <genOperations ecoreOperation="oml.ecore#//PropertyValueRestrictionAxiom/getValue"
+          body="&lt;%io.opencaesar.oml.Element%> _xifexpression = null;&#xA;&lt;%io.opencaesar.oml.SemanticProperty%> _property = this.getProperty();&#xA;if ((_property instanceof &lt;%io.opencaesar.oml.ScalarProperty%>))&#xA;{&#xA;&#x9;_xifexpression = this.getLiteralValue();&#xA;}&#xA;else&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.Instance%> _xifexpression_1 = null;&#xA;&#x9;&lt;%io.opencaesar.oml.SemanticProperty%> _property_1 = this.getProperty();&#xA;&#x9;if ((_property_1 instanceof &lt;%io.opencaesar.oml.StructuredProperty%>))&#xA;&#x9;{&#xA;&#x9;&#x9;_xifexpression_1 = this.getStructureInstanceValue();&#xA;&#x9;}&#xA;&#x9;else&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%io.opencaesar.oml.NamedInstance%> _xifexpression_2 = null;&#xA;&#x9;&#x9;&lt;%io.opencaesar.oml.SemanticProperty%> _property_2 = this.getProperty();&#xA;&#x9;&#x9;if ((_property_2 instanceof &lt;%io.opencaesar.oml.Relation%>))&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;_xifexpression_2 = this.getNamedInstanceValue();&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;_xifexpression_1 = _xifexpression_2;&#xA;&#x9;}&#xA;&#x9;_xifexpression = _xifexpression_1;&#xA;}&#xA;return _xifexpression;"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//PropertySelfRestrictionAxiom"/>
+    <genClasses ecoreClass="oml.ecore#//TypeAssertion">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//TypeAssertion/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//TypeAssertion/owningInstance"/>
+      <genOperations ecoreOperation="oml.ecore#//TypeAssertion/getSubject" body="&lt;%io.opencaesar.oml.Member%> _resolve = this.getOwningInstance().resolve();&#xA;return ((&lt;%io.opencaesar.oml.NamedInstance%>) _resolve);"/>
+      <genOperations ecoreOperation="oml.ecore#//TypeAssertion/getObject" body="return this.getType();"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//PropertyValueAssertion">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyValueAssertion/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyValueAssertion/literalValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyValueAssertion/structureInstanceValue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyValueAssertion/namedInstanceValue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyValueAssertion/owningInstance"/>
+      <genOperations ecoreOperation="oml.ecore#//PropertyValueAssertion/getValue"
+          body="&lt;%io.opencaesar.oml.Element%> _xifexpression = null;&#xA;&lt;%io.opencaesar.oml.SemanticProperty%> _property = this.getProperty();&#xA;if ((_property instanceof &lt;%io.opencaesar.oml.ScalarProperty%>))&#xA;{&#xA;&#x9;_xifexpression = this.getLiteralValue();&#xA;}&#xA;else&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.Instance%> _xifexpression_1 = null;&#xA;&#x9;&lt;%io.opencaesar.oml.SemanticProperty%> _property_1 = this.getProperty();&#xA;&#x9;if ((_property_1 instanceof &lt;%io.opencaesar.oml.StructuredProperty%>))&#xA;&#x9;{&#xA;&#x9;&#x9;_xifexpression_1 = this.getStructureInstanceValue();&#xA;&#x9;}&#xA;&#x9;else&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%io.opencaesar.oml.NamedInstance%> _xifexpression_2 = null;&#xA;&#x9;&#x9;&lt;%io.opencaesar.oml.SemanticProperty%> _property_2 = this.getProperty();&#xA;&#x9;&#x9;if ((_property_2 instanceof &lt;%io.opencaesar.oml.Relation%>))&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;_xifexpression_2 = this.getNamedInstanceValue();&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;_xifexpression_1 = _xifexpression_2;&#xA;&#x9;}&#xA;&#x9;_xifexpression = _xifexpression_1;&#xA;}&#xA;return _xifexpression;"/>
+      <genOperations ecoreOperation="oml.ecore#//PropertyValueAssertion/getSubject"
+          body="&lt;%io.opencaesar.oml.Instance%> _owningInstance = this.getOwningInstance();&#xA;if ((_owningInstance instanceof &lt;%io.opencaesar.oml.NamedInstance%>))&#xA;{&#xA;&#x9;&lt;%io.opencaesar.oml.Instance%> _owningInstance_1 = this.getOwningInstance();&#xA;&#x9;&lt;%io.opencaesar.oml.Member%> _resolve = ((&lt;%io.opencaesar.oml.NamedInstance%>) _owningInstance_1).resolve();&#xA;&#x9;return ((&lt;%io.opencaesar.oml.NamedInstance%>) _resolve);&#xA;}&#xA;return this.getOwningInstance();"/>
+      <genOperations ecoreOperation="oml.ecore#//PropertyValueAssertion/getObject"
+          body="return this.getValue();"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//UnaryPredicate">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//UnaryPredicate/argument"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="oml.ecore#//BinaryPredicate">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//BinaryPredicate/argument1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//BinaryPredicate/argument2"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//BuiltInPredicate">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//BuiltInPredicate/builtIn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference oml.ecore#//BuiltInPredicate/arguments"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//TypePredicate">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//TypePredicate/type"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//RelationEntityPredicate">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//RelationEntityPredicate/type"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//PropertyPredicate">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//PropertyPredicate/property"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//SameAsPredicate"/>
+    <genClasses ecoreClass="oml.ecore#//DifferentFromPredicate"/>
+    <genClasses ecoreClass="oml.ecore#//QuotedLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//QuotedLiteral/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//QuotedLiteral/langTag"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference oml.ecore#//QuotedLiteral/type"/>
+      <genOperations ecoreOperation="oml.ecore#//QuotedLiteral/getLexicalValue" body="&lt;%java.lang.String%> _value = this.getValue();&#xA;&lt;%java.lang.String%> _plus = (&quot;\&quot;&quot; + _value);&#xA;&lt;%java.lang.String%> _plus_1 = (_plus + &quot;\&quot;&quot;);&#xA;&lt;%java.lang.String%> _xifexpression = null;&#xA;&lt;%java.lang.String%> _langTag = this.getLangTag();&#xA;boolean _tripleNotEquals = (_langTag != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;&lt;%java.lang.String%> _langTag_1 = this.getLangTag();&#xA;&#x9;_xifexpression = (&quot;$&quot; + _langTag_1);&#xA;}&#xA;else&#xA;{&#xA;&#x9;&lt;%java.lang.String%> _typeIri = this.getTypeIri();&#xA;&#x9;&lt;%java.lang.String%> _plus_2 = (&quot;^^&lt;&quot; + _typeIri);&#xA;&#x9;_xifexpression = (_plus_2 + &quot;>&quot;);&#xA;}&#xA;return (_plus_1 + _xifexpression);"/>
+      <genOperations ecoreOperation="oml.ecore#//QuotedLiteral/getTypeIri" body="&lt;%java.lang.String%> _xifexpression = null;&#xA;&lt;%io.opencaesar.oml.Scalar%> _type = this.getType();&#xA;boolean _tripleNotEquals = (_type != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;_xifexpression = this.getType().getIri();&#xA;}&#xA;else&#xA;{&#xA;&#x9;_xifexpression = (&lt;%io.opencaesar.oml.util.OmlConstants%>.XSD_NS + &quot;string&quot;);&#xA;}&#xA;return _xifexpression;"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//IntegerLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//IntegerLiteral/value"/>
+      <genOperations ecoreOperation="oml.ecore#//IntegerLiteral/getTypeIri" body="return (&lt;%io.opencaesar.oml.util.OmlConstants%>.XSD_NS + &quot;integer&quot;);"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//DecimalLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//DecimalLiteral/value"/>
+      <genOperations ecoreOperation="oml.ecore#//DecimalLiteral/getTypeIri" body="return (&lt;%io.opencaesar.oml.util.OmlConstants%>.XSD_NS + &quot;decimal&quot;);"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//DoubleLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//DoubleLiteral/value"/>
+      <genOperations ecoreOperation="oml.ecore#//DoubleLiteral/getTypeIri" body="return (&lt;%io.opencaesar.oml.util.OmlConstants%>.XSD_NS + &quot;double&quot;);"/>
+    </genClasses>
+    <genClasses ecoreClass="oml.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute oml.ecore#//BooleanLiteral/value"/>
+      <genOperations ecoreOperation="oml.ecore#//BooleanLiteral/isValue" body="return this.getValue().booleanValue();"/>
+      <genOperations ecoreOperation="oml.ecore#//BooleanLiteral/getTypeIri" body="return (&lt;%io.opencaesar.oml.util.OmlConstants%>.XSD_NS + &quot;boolean&quot;);"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
