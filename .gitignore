@@ -24,3 +24,4 @@ hs_err_pid*
 replay_pid*
 /omlwarmingup/.settings/org.eclipse.jdt.core.prefs
 /omlwarmingup/.settings/org.eclipse.m2e.core.prefs
+/omlwarmingup/.settings/org.eclipse.buildship.core.prefs
