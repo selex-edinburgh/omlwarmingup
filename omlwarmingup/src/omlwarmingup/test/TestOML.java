@@ -3,6 +3,7 @@ package omlwarmingup.test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -105,6 +106,34 @@ class TestOML {
 
 			String contentXmi = Files.readString(xmiFile.toPath());
 			assertThat(contentXmi.contains("http://test#")).isTrue();
+			
+			omlResource.unload();
+			xmiResource.unload();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		try {
+			xmiResource.load(null);
+			omlResource.getContents().addAll(EcoreUtil.copyAll(xmiResource.getContents()));
+			omlResource.save(null);
+			
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			
+			omlResource.save(baos, null);
+			String code = new String(baos.toByteArray(), StandardCharsets.UTF_8);
+			System.out.println(code);
+			
+			String contentOml = Files.readString(omlFile.toPath());
+			assertThat(contentOml.contains("http://test#")).isTrue();
+
+			String contentXmi = Files.readString(xmiFile.toPath());
+			assertThat(contentXmi.contains("http://test#")).isTrue();
+			
+			omlResource.unload();
+			xmiResource.unload();
 
 		} catch (IOException e) {
 			e.printStackTrace();
